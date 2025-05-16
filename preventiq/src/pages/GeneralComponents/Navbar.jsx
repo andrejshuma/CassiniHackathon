@@ -1,18 +1,15 @@
 import React, { useState } from "react";
+import logo from "../../assets/logoSmall.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="relative" data-theme="nord">
+    <nav className="relative rounded-lg" data-theme="nord">
       <div className="container px-6 py-3 mx-auto md:flex">
         <div className="flex items-center justify-between">
           <a href="#">
-            <img
-              className="w-auto h-6 sm:h-7"
-              src="https://merakiui.com/images/full-logo.svg"
-              alt=""
-            />
+            <img className="w-auto h-8 sm:h-8 rounded-md" src={logo} alt="" />
           </a>
 
           {/* Mobile menu button */}
@@ -60,7 +57,7 @@ const Navbar = () => {
 
         {/* Mobile Menu open: "block", Menu closed: "hidden" */}
         <div
-          className={`absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 md:mt-0 md:p-0 md:top-0 md:relative md:opacity-100 md:translate-x-0 md:flex md:items-center md:justify-between ${
+          className={`absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 md:mt-0 md:p-0 md:top-0 md:relative md:opacity-100 md:translate-x-0 md:flex md:items-center md:justify-between rounded-lg ${
             isOpen ? "translate-x-0 opacity-100" : "opacity-0 -translate-x-full"
           }`}
         >
