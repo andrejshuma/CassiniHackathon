@@ -1,7 +1,7 @@
 import cdsapi
 import xarray as xr
 import pandas as pd
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import os
 import tempfile
 
@@ -55,21 +55,21 @@ def clean_data(doc, variable):
     data = df.dropna()
     return data, df
 
-def plot(data, dataframe):
+# def plot(data, dataframe):
 
-    plt.figure(figsize=(12, 6))
+#     plt.figure(figsize=(12, 6))
 
-    plt.plot(data['valid_time'], data['uv_radiation_J_per_m2'], marker='o', linestyle='-')
+#     plt.plot(data['valid_time'], data['uv_radiation_J_per_m2'], marker='o', linestyle='-')
 
-    plt.title("Surface Downward UV Radiation Over Time", fontsize=14)
-    plt.xlabel("Time", fontsize=12)
-    plt.ylabel("UV Radiation (J/m²)", fontsize=12)
+#     plt.title("Surface Downward UV Radiation Over Time", fontsize=14)
+#     plt.xlabel("Time", fontsize=12)
+#     plt.ylabel("UV Radiation (J/m²)", fontsize=12)
 
-    plt.grid(True)
-    plt.xticks(rotation=45)
-    plt.tight_layout()
+#     plt.grid(True)
+#     plt.xticks(rotation=45)
+#     plt.tight_layout()
 
-    plt.show()
+#     plt.show()
 
     # print(dataframe)
 

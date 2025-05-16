@@ -26,7 +26,6 @@ def get_uv_(request):
             df = df.fillna(0)
             json_data = df.to_dict(orient='records')
 
-            json_data = df.to_dict(orient='records')
             print(json_data)
             return JsonResponse({'data': json_data}, status=200)
         except json.JSONDecodeError:
