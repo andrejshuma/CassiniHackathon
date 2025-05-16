@@ -1,13 +1,13 @@
 import React from "react";
 import Navbar from "../GeneralComponents/Navbar";
 
-const Home = () => {
+const GreenAreas = () => {
   return (
     <>
       <Navbar />
-      <h1>Home</h1>
+      <div>GreenAreas</div>
     </>
   );
 };
 
-export default Home;
+export default GreenAreas;
