@@ -73,7 +73,7 @@ def plot(data, dataframe):
 
     # print(dataframe)
 
-def get_uv_plot(long, lat):
+def get_uv(long, lat):
 
     # area = [42.037819, 21.328068, 41.947234, 21.552944]
     area = [lat + 0.02, long - 0.02, lat - 0.02, long - 0.02]

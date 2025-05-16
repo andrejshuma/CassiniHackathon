@@ -16,7 +16,7 @@ function Test() {
 
 	const sendLocation = () => {
 		const success = (position) => {
-			const url = "http://127.0.0.1:8000/endpoint/";
+			const url = "http://127.0.0.1:8000/uv/";
 			const data = {
 				latitude: position.coords.latitude,
 				longitude: position.coords.longitude,

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
-from .uv import get_uv_plot
+from .requests.uv import get_uv
 import pandas as pd
 
 # Create your views here.
@@ -11,7 +11,7 @@ def index(request):
 
 
 @csrf_exempt  
-def my_post_view(request):
+def get_uv_(request):
     if request.method == 'POST':
         try:
             data = json.loads(request.body.decode('utf-8'))
@@ -20,7 +20,7 @@ def my_post_view(request):
             lat = data.get('latitude')
 
 
-            df = get_uv_plot(long, lat)
+            df = get_uv(long, lat)
 
             df['valid_time'] = df['valid_time'].astype(str)  
             df = df.fillna(0)
