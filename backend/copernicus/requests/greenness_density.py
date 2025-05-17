@@ -1,3 +1,4 @@
+
 from satellite_requests.stat_collector import get_request_green
 from PIL import Image
 from io import BytesIO
@@ -22,4 +23,4 @@ def greenness_density(latitude, longitude):
     # plt.show()
     return {"greenness_density": float(np.mean(ndgi))}
 
-print(greenness_density(42.005507, 21.411283))
+

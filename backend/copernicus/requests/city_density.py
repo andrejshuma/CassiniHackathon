@@ -14,4 +14,3 @@ def city_density(latitude, longitude):
 
     return {"city_density_in_location": float(np.mean(intensity) / 255)}
 
-print(city_density(42.005507, 21.411283))

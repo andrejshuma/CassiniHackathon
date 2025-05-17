@@ -13,6 +13,7 @@ from consts import KEY
 from consts import KEY
 
 
+
 def get_forecast_curr_time_and_lead_time():
     now = datetime.now(ZoneInfo("Europe/Skopje"))
 

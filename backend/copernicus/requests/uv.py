@@ -3,9 +3,11 @@ import xarray as xr
 import pandas as pd
 import os
 import tempfile
-from .consts import KEY
+from consts import KEYUV
+
 
 URL = "https://ads.atmosphere.copernicus.eu/api"
+KEY=KEYUV
 
 def request_uv(year, month, day, variable, area):
     dataset = "reanalysis-era5-single-levels"
@@ -94,5 +96,7 @@ def get_uv(long, lat):
     df['valid_time'] = df['valid_time'].astype(str)
     df = df.fillna(0)
     json_data = df.to_dict(orient='records')
-
+    print(json_data)
     return json_data
+
+get_uv(21.417165, 42.005299)

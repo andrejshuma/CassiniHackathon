@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 import json
 import math
 from population_getter import get_population_from_location
+
 def haversine(lon1, lat1, lon2, lat2):
     # Calculate the great-circle distance between two points on the Earth
     R = 6371  # Earth radius in kilometers
@@ -13,13 +14,41 @@ def haversine(lon1, lat1, lon2, lat2):
     c = 2 * math.asin(math.sqrt(a))
     return R * c
 
-def get_air_pollution(lat, long, max_distance=30):
+def categorize_air_quality(pm10_value):
+    """
+    Categorize air quality based on PM10 values and return both category and score.
+    
+    Categories:
+    - Good: 0-20 μg/m³ (Score: 1)
+    - Moderate: 21-50 μg/m³ (Score: 2)
+    - Unhealthy for Sensitive Groups: 51-100 μg/m³ (Score: 3)
+    - Unhealthy: 101-150 μg/m³ (Score: 4)
+    - Very Unhealthy: 151-200 μg/m³ (Score: 5)
+    - Hazardous: >200 μg/m³ (Score: 6)
+    """
+    try:
+        value = float(pm10_value)
+        if value <= 20:
+            return {"category": "Good", "score": 1}
+        elif value <= 50:
+            return {"category": "Moderate", "score": 2}
+        elif value <= 100:
+            return {"category": "Unhealthy for Sensitive Groups", "score": 3}
+        elif value <= 150:
+            return {"category": "Unhealthy", "score": 4}
+        elif value <= 200:
+            return {"category": "Very Unhealthy", "score": 5}
+        else:
+            return {"category": "Hazardous", "score": 6}
+    except (ValueError, TypeError):
+        return {"category": "Unknown", "score": None}
 
-    obj= get_population_from_location(lat, long)
+def get_air_pollution(lat, long, max_distance=30):
+    obj = get_population_from_location(lat, long)
     city = obj['city']
     print(city)
 
-    sensors=f'https://{city}.pulse.eco/rest/sensor'
+    sensors = f'https://{city}.pulse.eco/rest/sensor'
     response = requests.get(sensors)
     if response.status_code != 200:
         return json.dumps([])
@@ -38,8 +67,6 @@ def get_air_pollution(lat, long, max_distance=30):
                 
                 sensor_lat = float(parts[0])
                 sensor_long = float(parts[1])
-
-                # print(sensor_long, sensor_lat)
                 dist = haversine(long, lat, sensor_long, sensor_lat)
                 
                 # Only consider sensors within max_distance
@@ -50,6 +77,7 @@ def get_air_pollution(lat, long, max_distance=30):
     
     if not sensors_with_distances:
         return json.dumps([])
+    
     # Sort sensors by distance (closest first)
     sensors_with_distances.sort(key=lambda x: x[1])
     
@@ -59,6 +87,7 @@ def get_air_pollution(lat, long, max_distance=30):
     
     # Try sensors in order of proximity until we find one with data
     if len(sensors_with_distances)==0: return {}
+    
     for sensor_entry, dist in sensors_with_distances:
         sensorID = sensor_entry['sensorId']
         
@@ -70,12 +99,32 @@ def get_air_pollution(lat, long, max_distance=30):
             try:
                 data = response.json()
                 for entry in data:
-                    filtered = {k: entry[k] for k in ('stamp', 'position', 'value') if k in entry}
-                    if filtered:
-                        results.append(filtered)
+                    if 'stamp' in entry and 'value' in entry:
+                        # Create simplified object with datetime, value and normalized value
+                        try:
+                            original_value = float(entry['value'])
+                            scaled_value = original_value / 900.0  # Scale by dividing by 900
+                            
+                            # Get air quality category and score
+                            quality_info = categorize_air_quality(original_value)
+                            
+                            simplified = {
+                                "datetime": entry['stamp'],
+                                "value": original_value,
+                                "scaled_value": scaled_value,
+                                "category": quality_info["category"],
+                                "score": quality_info["score"]
+                            }
+                            
+                            results.append(simplified)
+                        except (ValueError, TypeError):
+                            # Skip entries with invalid numeric values
+                            pass
                 
                 if results:
-                    return json.dumps(results, indent=4)
+                    # Return the first valid result
+                    return json.dumps(results[-1])
+
             except Exception:
                 pass
     
@@ -83,5 +132,4 @@ def get_air_pollution(lat, long, max_distance=30):
     return json.dumps([])
 
 # Example usage
-# print(get_air_pollution(lat=41.934, long=21.3))
-
+print(get_air_pollution(lat=41.934, long=21.3))
