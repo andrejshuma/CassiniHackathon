@@ -9,11 +9,11 @@ import os
 load_dotenv()
 
 
-def get_bbox_from_lat_lng(lat, lng):
-    x1 = "{:.6f}".format(lng - 0.008)
-    y1 = "{:.6f}".format(lat - 0.003635)
-    x2 = "{:.6f}".format(lng + 0.008)
-    y2 = "{:.6f}".format(lat + 0.003635)
+def get_bbox_from_lat_lng(lat, lng, xOffset=0.008, yOffset=0.003635):
+    x1 = "{:.6f}".format(lng - xOffset)
+    y1 = "{:.6f}".format(lat - yOffset)
+    x2 = "{:.6f}".format(lng + xOffset)
+    y2 = "{:.6f}".format(lat + yOffset)
     array = [float(x1), float(y1), float(x2), float(y2)]
     return array
 

@@ -5,7 +5,7 @@ import xarray as xr
 import os
 import pandas as pd
 import geocoder
-from .consts import KEY
+from consts import KEY
 
 
 def get_forecast_curr_time_and_lead_time():
@@ -87,4 +87,4 @@ def get_pollen_data_json(lat, lon):
 
     return df.to_dict(orient="records")
 
-get_pollen_data_json(42.005299, 21.417165)
+get_pollen_data_json(-6.994040, -67.469565)
