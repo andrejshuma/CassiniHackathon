@@ -2,6 +2,7 @@ import React from 'react'
 import userDefault from "../../../assets/userDefault.jpg";
 import SplitText from "./SplitText.jsx";
 
+
 const Top = () => {
     return (
         <div className="px-6 py-4 flex justify-between items-center" data-theme = "nord">

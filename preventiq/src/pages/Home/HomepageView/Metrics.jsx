@@ -1,11 +1,93 @@
-import { Activity, Heart, MessageCircle, Phone } from 'lucide-react';
+import { Activity, Brain, Heart, MessageCircle, Phone, Sun, Moon, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
+import NewSlider from "../NewSlider.jsx";
+import OverralHealth from "../OverralHealth.jsx";
+import Slider_features from "../Slider_features.jsx";
 
-export default function HeartHealthMetrics() {
+export default function Metrics() {
     const navigate = useNavigate();
+    const [mentalHealthScore, setMentalHealthScore] = useState(72);
+
+
+    const getMentalHealthCategory = (score) => {
+        if (score >= 80) return { label: "Excellent", color: "text-green-600" };
+        if (score >= 70) return { label: "Good", color: "text-green-500" };
+        if (score >= 60) return { label: "Fair", color: "text-yellow-500" };
+        if (score >= 50) return { label: "Needs Attention", color: "text-orange-500" };
+        return { label: "Poor", color: "text-red-500" };
+    };
+
+    const mentalHealthCategory = getMentalHealthCategory(mentalHealthScore);
+
     return (
         <div className="p-4 max-w-md mx-auto">
-            {/* Health Tips Card with 3D Heart */}
+            {/* Mental Health Card */}
+            <div className="bg-blue-50 rounded-3xl p-4 mb-4">
+                <div className="flex justify-between items-start mb-3">
+                    <div className="flex items-center">
+                        <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center overflow-hidden mr-4">
+                            <svg viewBox="0 0 24 24" width="24" height="24" className="text-green-500">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 className="font-bold text-gray-700">Overall Health</h3>
+                            <p className="text-sm text-gray-600">Today's Status: <span className={mentalHealthCategory.color}>{mentalHealthCategory.label}</span></p>
+                        </div>
+                    </div>
+                    <button
+                        className="text-blue-600 text-sm font-medium"
+                        onClick={() => navigate('/mental-health')}
+                    >
+                        Details
+                    </button>
+                </div>
+
+                {/* Progress Bar */}
+                <div className="w-full bg-gray-200 rounded-full h-4 mb-3">
+                    <div
+                        className="h-4 rounded-full bg-gradient-to-r from-blue-400 to-blue-600"
+                        style={{ width: `${mentalHealthScore}%` }}
+                    ></div>
+                </div>
+
+                <div className="flex justify-between text-xs text-gray-500 mb-4">
+                    <span>0</span>
+                    <span>50</span>
+                    <span>100</span>
+                </div>
+
+                {/* Wellness Metrics */}
+                <div className="grid grid-cols-3 gap-2 mb-4">
+                    <div className="bg-white p-2 rounded-lg text-center">
+                        <Sun size={16} className="text-amber-500 mx-auto mb-1" />
+                        <span className="text-xs text-gray-700 block">Mood</span>
+                        <span className="font-medium text-sm">Good</span>
+                    </div>
+                    <div className="bg-white p-2 rounded-lg text-center">
+                        <Moon size={16} className="text-indigo-500 mx-auto mb-1" />
+                        <span className="text-xs text-gray-700 block">Sleep</span>
+                        <span className="font-medium text-sm">6.5h</span>
+                    </div>
+                    <div className="bg-white p-2 rounded-lg text-center">
+                        <Zap size={16} className="text-yellow-500 mx-auto mb-1" />
+                        <span className="text-xs text-gray-700 block">Stress</span>
+                        <span className="font-medium text-sm">Medium</span>
+                    </div>
+                </div>
+
+                {/* Tips/Recommendations */}
+                <div className="bg-white rounded-lg p-3 text-sm border border-blue-100">
+                    <h4 className="font-medium text-gray-700 mb-1">Today's Recommendation</h4>
+                    <p className="text-gray-600">Try 5 minutes of mindful breathing to reduce stress and improve your focus for the day.</p>
+                </div>
+            </div>
+
+
+            <NewSlider/>
+
+
             <div className="bg-green-100 rounded-3xl p-4 mb-4 flex justify-between">
                 <div className="space-y-3">
                     <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center">
@@ -69,7 +151,7 @@ export default function HeartHealthMetrics() {
                               fill="none" stroke="#a5b4fc" strokeWidth="2" strokeLinecap="round" />
                     </svg>
                 </div>
-            </div>
+            </div> {/*health tips*/}
 
             {/* Metrics Row */}
             <div className="grid grid-cols-2 gap-4 mb-4">
@@ -94,7 +176,7 @@ export default function HeartHealthMetrics() {
                 {/* Pollen Count */}
                 <div className="bg-gray-100 rounded-3xl p-4">   <div className="w-10 h-10 mb-6 flex items-center justify-center" >
                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="text-gray-700">
-                        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" strokeWidth="2"/>
 
 
                         <circle cx="12" cy="5" r="1.5" fill="currentColor"/>
@@ -109,16 +191,16 @@ export default function HeartHealthMetrics() {
                         <circle cx="16.5" cy="7.5" r="1.5" fill="currentColor"/>
 
 
-                        <line x1="12" y1="2" x2="12" y2="3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                        <line x1="12" y1="20.5" x2="12" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                        <line x1="2" y1="12" x2="3.5" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                        <line x1="20.5" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="12" y1="2" x2="12" y2="3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                        <line x1="12" y1="20.5" x2="12" y2="22" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                        <line x1="2" y1="12" x2="3.5" y2="12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                        <line x1="20.5" y1="12" x2="22" y2="12" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
 
 
-                        <line x1="4.5" y1="4.5" x2="6" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                        <line x1="18" y1="18" x2="19.5" y2="19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                        <line x1="4.5" y1="19.5" x2="6" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                        <line x1="18" y1="6" x2="19.5" y2="4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="4.5" y1="4.5" x2="6" y2="6" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                        <line x1="18" y1="18" x2="19.5" y2="19.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                        <line x1="4.5" y1="19.5" x2="6" y2="18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                        <line x1="18" y1="6" x2="19.5" y2="4.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
                     </svg>
                 </div>
                     <div>
@@ -164,38 +246,57 @@ export default function HeartHealthMetrics() {
                         </div>
                     </div>
                 </div>
-
-
             </div>
 
 
 
-            <div className="bg-yellow-100 rounded-3xl p-4 flex justify-between items-center">
-                <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center overflow-hidden">
-                        <svg viewBox="0 0 24 24" width="24" height="24" className="text-green-500">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
+
+
+
+            <div className="bg-cyan-50 rounded-3xl p-4 mb-4">
+                <h3 className="font-bold text-gray-700 mb-2">Weather Impact</h3>
+                <div className="flex items-start space-x-3">
+                    <div className="bg-white p-3 rounded-xl flex items-center">
+                        <Sun size={24} className="text-amber-500 mr-2" />
+                        <div className="text-xs">
+                            <p className="text-gray-500">Today</p>
+                            <p className="font-bold text-gray-700">23°C</p>
+                        </div>
                     </div>
-                    <div>
-                        <h3 className="font-bold text-gray-700">Overall Health</h3>
-                        <p className="text-sm text-gray-700">Score: 78/100 (Good)</p>
+                    <div className="flex-1 text-sm">
+                        <p className="font-medium text-gray-700">Health Impact</p>
+                        <ul className="text-xs text-gray-600 space-y-1 mt-1">
+                            <li>• Humidity (65%) may affect respiratory health</li>
+                            <li>• Moderate UV levels - sunscreen recommended</li>
+                            <li>• Low pressure may trigger headaches</li>
+                        </ul>
                     </div>
-                </div>
-                <div className="flex space-x-2">
-                    <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                        <svg viewBox="0 0 24 24" width="18" height="18" className="text-green-500">
-                            <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                    </button>
-                    <button className="w-10 h-10 bg-white rounded-full flex items-center justify-center">
-                        <svg viewBox="0 0 24 24" width="18" height="18" className="text-green-500">
-                            <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" strokeWidth="2" />
-                            <path d="M12 16v-4M12 8h.01" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                        </svg>
-                    </button>
                 </div>
             </div>
+
+            <div className="bg-indigo-50 rounded-3xl p-4 mb-4">
+                <div className="flex items-center mb-3">
+                    <div className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
+                        <Zap size={18} className="text-indigo-600" />
+                    </div>
+                    <h3 className="font-bold text-gray-700">Today's Insights</h3>
+                </div>
+                <div className="bg-white rounded-lg p-3 border border-indigo-100">
+                    <p className="text-sm text-gray-600 mb-2">
+                        <span className="font-medium">Pattern detected:</span> Your mental health scores tend to improve on days with less air pollution.
+                    </p>
+                    <p className="text-sm text-gray-600">
+                        <span className="font-medium">Suggestion:</span> Plan your outdoor activities for early morning when air quality is better.
+                    </p>
+                </div>
+            </div>
+
+
+
+
+
+
+
         </div>
     );
 }
