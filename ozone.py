@@ -14,13 +14,13 @@ def ozone(latitude, longitude):
     else:
         intensity = img_array.mean(axis=2)
 
-    plt.figure(figsize=(10, 10))
-    plt.imshow(intensity, cmap='hot', interpolation='nearest')
-    plt.title("Ozone Map of Skopje (Raw)")
-    plt.axis('off')
-    plt.colorbar(label='Ozone')
-    plt.show()
+    # plt.figure(figsize=(10, 10))
+    # plt.imshow(intensity, cmap='hot', interpolation='nearest')
+    # plt.title("Ozone Map of Skopje (Raw)")
+    # plt.axis('off')
+    # plt.colorbar(label='Ozone')
+    # plt.show()
 
-    return np.mean(intensity) / 255
+    return intensity[int(len(intensity) / 2)][int(len(intensity[0]) / 2)]
 
 print(ozone(42.005507, 21.411283))
