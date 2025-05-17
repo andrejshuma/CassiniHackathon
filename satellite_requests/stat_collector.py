@@ -1,11 +1,22 @@
-import os
 from oauthlib.oauth2 import BackendApplicationClient
 from requests_oauthlib import OAuth2Session
 from sentinelhub import SHConfig
-import getpass
-import tqdm as notebook_tqdm
+from geopy.geocoders import Nominatim
 from dotenv import load_dotenv
+import tqdm as notebook_tqdm
+import getpass
+import os
 load_dotenv()
+
+
+def get_bbox_from_lat_lng(lat, lng):
+    x1 = "{:.6f}".format(lng - 0.008)
+    y1 = "{:.6f}".format(lat - 0.003635)
+    x2 = "{:.6f}".format(lng + 0.008)
+    y2 = "{:.6f}".format(lat + 0.003635)
+    array = [float(x1), float(y1), float(x2), float(y2)]
+    return array
+
 
 def get_config():
     config = SHConfig()
@@ -53,7 +64,8 @@ def evaluatePixel(samples):
     gain = 0.7
     return [gain*Rooftop, gain*Vegetation, gain*Water]
 
-def get_request_city_density():
+def get_request_city_density(latitude, longitude):
+    bbox=get_bbox_from_lat_lng(latitude, longitude)
     evalscript="""//VERSION=3
 function setup() {
   return {
@@ -74,14 +86,14 @@ function evaluatePixel(sample) {
         "input": {
             "bounds": {
                 "properties": {"crs": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"},
-                "bbox": [21.411921, 41.936182, 21.441921, 41.986182],
+                "bbox": bbox,
             },
             "data": [
                 {
                     "dataFilter": {
                         "timeRange": {
                             "from": "2025-04-16T00:00:00Z",
-                            "to": "2025-05-16T23:59:59Z"
+                            "to": "2025-04-17T23:59:59Z"
                         }
                     },
                     "type": "sentinel-1-grd",
@@ -111,7 +123,8 @@ function evaluatePixel(sample) {
 
     return response
 
-def get_request_green():
+def get_request_green(latitude, longitude):
+    bbox = get_bbox_from_lat_lng(latitude, longitude)
     evalscript="""var ndvi = (B08-B04)/(B08+B04);
 
 // Threshold for vegetation
@@ -135,7 +148,7 @@ return pixel;"""
         "input": {
             "bounds": {
                 "properties": {"crs": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"},
-                "bbox": [21.331921, 41.896182, 21.531921, 42.096182],
+                "bbox": bbox,
             },
             "data": [
                 {
