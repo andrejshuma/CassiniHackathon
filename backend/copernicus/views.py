@@ -28,20 +28,20 @@ def get_data(request):
             lat = data.get('latitude')
             city = get_population_from_location(lat=lat, lng=long, population_data_=pop_data)['city']
             with ThreadPoolExecutor(max_workers=5) as executor:
-                # pollen = executor.submit(get_pollen_data_json,lat=lat, lon=long)
-                uv = executor.submit(get_uv, long=long, lat=lat)
-                # green_density = executor.submit(greenness_density, latitude=lat, longitude=long)
-                # city_density_ = executor.submit(city_density, latitude=lat, longitude=long)
+                pollen = executor.submit(get_pollen_data_json,lat=lat, lon=long)
+                # uv = executor.submit(get_uv, long=long, lat=lat)
+                green_density = executor.submit(greenness_density, latitude=lat, longitude=long)
+                city_density_ = executor.submit(city_density, latitude=lat, longitude=long)
                 air_pollution = executor.submit(get_air_pollution, lat=lat, long=long, city=city)
-                # ozone_density_ = executor.submit(ozone_density, latitude=lat, longitude=long)
-
+                ozone_density_ = executor.submit(ozone_density, latitude=lat, longitude=long)
+            
                 results = {
-                    # 'pollen': pollen.result(),
-                    'uv': uv.result(),
-                    # 'green_density': green_density.result(),
-                    # 'city_density': city_density_.result(),
+                    'pollen': pollen.result(),
+                    # 'uv': uv.result(),
+                    'green_density': green_density.result(),
+                    'city_density': city_density_.result(),
                     'air_pollution': air_pollution.result(),
-                    # 'ozone_density': ozone_density_.result()
+                    'ozone_density': ozone_density_.result()
                 }
             
             print(results)

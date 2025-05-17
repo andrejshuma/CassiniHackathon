@@ -3,11 +3,11 @@ import xarray as xr
 import pandas as pd
 import os
 import tempfile
-from .consts import KEY
+from consts import KEY
 
 
 URL = "https://ads.atmosphere.copernicus.eu/api"
-KEY=KEY
+KEY="457347ba-9776-4077-992b-c673b0776e6f"
 
 def request_uv(year, month, day, variable, area):
     dataset = "reanalysis-era5-single-levels"
@@ -60,31 +60,13 @@ def clean_data(doc, variable):
     data = df.dropna()
     return data, df
 
-# def plot(data, dataframe):
-
-#     plt.figure(figsize=(12, 6))
-
-#     plt.plot(data['valid_time'], data['uv_radiation_J_per_m2'], marker='o', linestyle='-')
-
-#     plt.title("Surface Downward UV Radiation Over Time", fontsize=14)
-#     plt.xlabel("Time", fontsize=12)
-#     plt.ylabel("UV Radiation (J/m²)", fontsize=12)
-
-#     plt.grid(True)
-#     plt.xticks(rotation=45)
-#     plt.tight_layout()
-
-#     plt.show()
-
-    # print(dataframe)
 
 def get_uv(long, lat):
-
     # area = [42.037819, 21.328068, 41.947234, 21.552944]
     area = [lat + 0.02, long - 0.02, lat - 0.02, long - 0.02]
-    doc = request_uv(year="2025", month="01", day="10", variable="downward_uv_radiation_at_the_surface", area=area)
+    doc = request_uv(year="2025", month="05", day="08", variable="downward_uv_radiation_at_the_surface", area=area)
     cleaned_data, df = clean_data(doc=doc, variable="uvb")
-
+    print(cleaned_data)
     # print(dataframe)
 
     os.remove(doc)
@@ -92,8 +74,6 @@ def get_uv(long, lat):
     df['valid_time'] = df['valid_time'].astype(str)  
 
     df['valid_time'] = pd.to_datetime(df['valid_time'])
-    df = df[df['valid_time'].dt.day == int("10")]  
-    df['valid_time'] = df['valid_time'].astype(str)
     df = df.fillna(0)
     json_data = df.to_dict(orient='records')
     return json_data
