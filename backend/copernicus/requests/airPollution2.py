@@ -77,5 +77,5 @@ def get_air_pollution(city, lat, long, max_distance=10):
     return json.dumps([])
 
 # Get air pollution data for the specified coordinates
-    result = get_air_pollution("skopje", 41.9, 21.5)
+    result = get_air_pollution(city, 41.9, 21.5)
     return result
