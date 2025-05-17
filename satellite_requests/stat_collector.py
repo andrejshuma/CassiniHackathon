@@ -179,10 +179,9 @@ return pixel;"""
     oauth=getauth_token()
     response = oauth.post(url, json=request, headers={"Accept": "image/tiff"})
 
-    if response.status_code in (200,):
-        with open(f"green_aktebe.tiff", "wb") as tarfile:
-            tarfile.write(response.content)
-
+    # if response.status_code in (200,):
+    #     with open(f"green_aktebe.tiff", "wb") as tarfile:
+    #         tarfile.write(response.content)
 
     return response
 

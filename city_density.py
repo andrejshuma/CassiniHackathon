@@ -1,14 +1,12 @@
 from satellite_requests.stat_collector import get_request_city_density
+from io import BytesIO
 import matplotlib.pyplot as plt
 import tifffile as tiff
 import numpy as np
 
 def city_density(latitude, longitude):
     response = get_request_city_density(latitude, longitude).content
-    with open('urban.tiff', 'wb') as file:
-        file.write(response)
-
-    img_array = tiff.imread('urban.tiff')
+    img_array = tiff.imread(BytesIO(response))
     if img_array.ndim == 2:
         intensity = img_array
     else:
@@ -21,6 +19,6 @@ def city_density(latitude, longitude):
     # plt.colorbar(label='Density Intensity')
     # plt.show()
 
-    return np.mean(intensity) / 255
+    return {"city_density_in_location": float(np.mean(intensity) / 255)}
 
 print(city_density(42.005507, 21.411283))
