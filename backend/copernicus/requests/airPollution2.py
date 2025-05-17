@@ -2,8 +2,8 @@ import requests
 from datetime import datetime, timedelta
 import json
 import math
-from population_getter import get_population_from_location
 
+from .population_getter import get_population_from_location
 def haversine(lon1, lat1, lon2, lat2):
     # Calculate the great-circle distance between two points on the Earth
     R = 6371  # Earth radius in kilometers
@@ -13,6 +13,7 @@ def haversine(lon1, lat1, lon2, lat2):
     a = math.sin(dlat/2)**2 + math.cos(math.radians(lat1)) * math.cos(math.radians(lat2)) * math.sin(dlon/2)**2
     c = 2 * math.asin(math.sqrt(a))
     return R * c
+
 
 def categorize_air_quality(pm10_value):
     """
@@ -43,10 +44,10 @@ def categorize_air_quality(pm10_value):
     except (ValueError, TypeError):
         return {"category": "Unknown", "score": None}
 
-def get_air_pollution(lat, long, max_distance=30):
-    obj = get_population_from_location(lat, long)
-    city = obj['city']
-    print(city)
+def get_air_pollution(lat, long, max_distance=30, city='Skopje'):
+
+    # obj= get_population_from_location(lat, long, population_data_= data)
+    # city = obj['city']
 
     sensors = f'https://{city}.pulse.eco/rest/sensor'
     response = requests.get(sensors)
@@ -132,4 +133,3 @@ def get_air_pollution(lat, long, max_distance=30):
     return json.dumps([])
 
 # Example usage
-print(get_air_pollution(lat=41.934, long=21.3))

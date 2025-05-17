@@ -1,0 +1,32 @@
+[
+	{
+		"pollen": [
+			{
+				"level": 0.0,
+				"time": "0 days 00:00:00",
+				"latitude": 42.04999923706055,
+				"apg_conc": 0.000244140625,
+				"bpg_conc": 0.001220703125,
+				"gpg_conc": 0.15118408203125,
+				"mpg_conc": 3.9860000996885716e-19,
+				"opg_conc": 0.091796875,
+				"rwpg_conc": 3.4185588735788843e-28
+			}
+			// ... (similar entries for other time periods)
+		],
+		"uv": [
+			{
+				"valid_time": "2025-01-10 00:00:00",
+				"uv_radiation_J_per_m2": 0.0
+			}
+			// ... (similar entries for other time periods)
+		],
+		"air_pollution": {
+			"datetime": "2025-05-17T19:10:52+02:00",
+			"value": 6.0,
+			"scaled_value": 0.006666666666666667,
+			"category": "Good",
+			"score": 1
+		}
+	}
+]

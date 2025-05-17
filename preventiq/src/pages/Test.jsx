@@ -36,8 +36,7 @@ function Test() {
 					return response.json();
 				})
 				.then((result) => {
-					console.log("uv", result.uv);
-					console.log("uv", result.pollen);
+					console.log("result:", result);
 				})
 				.catch((error) => {
 					console.error("Error:", error);

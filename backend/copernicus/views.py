@@ -9,8 +9,10 @@ from .requests.city_density import city_density
 from .requests.airPollution2 import get_air_pollution
 from .requests.ozone_density import ozone_density
 from .requests.population_getter import get_population_from_location
-
+from concurrent.futures import ThreadPoolExecutor
 import pandas as pd
+from pathlib import Path
+from .pop_helper import pop_data
 
 # Create your views here.
 def index(request):
@@ -24,23 +26,27 @@ def get_data(request):
             data = json.loads(request.body.decode('utf-8'))
             long = data.get('longitude')
             lat = data.get('latitude')
+            city = get_population_from_location(lat=lat, lng=long, population_data_=pop_data)['city']
+            with ThreadPoolExecutor(max_workers=5) as executor:
+                # pollen = executor.submit(get_pollen_data_json,lat=lat, lon=long)
+                uv = executor.submit(get_uv, long=long, lat=lat)
+                # green_density = executor.submit(greenness_density, latitude=lat, longitude=long)
+                # city_density_ = executor.submit(city_density, latitude=lat, longitude=long)
+                air_pollution = executor.submit(get_air_pollution, lat=lat, long=long, city=city)
+                # ozone_density_ = executor.submit(ozone_density, latitude=lat, longitude=long)
 
-
-            # vrakam tuka scoreovi za site
-            # 1. gi soberam site
-            pollen = get_pollen_data_json(lat=lat, lon=long)
-            uv = get_uv(long=long, lat=lat)
-            green_density = greenness_density(latitude=lat, longitude=long)
-            city_density_ = city_density(latitude=lat, longitude=long)
-            air_pollution = get_air_pollution(lat=lat, long=long)
-            ozone_density_ = ozone_density(latitude=lat, longitude=long)
-            # ......
+                results = {
+                    # 'pollen': pollen.result(),
+                    'uv': uv.result(),
+                    # 'green_density': green_density.result(),
+                    # 'city_density': city_density_.result(),
+                    'air_pollution': air_pollution.result(),
+                    # 'ozone_density': ozone_density_.result()
+                }
             
-            # gi vrakam scoreovite
+            print(results)
 
-            print(pollen)
-            
-            return JsonResponse({'uv': uv, 'pollen': pollen}, status=200)
+            return JsonResponse({'data': results}, status=200)
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON'}, status=400)
     else:
