@@ -3,7 +3,7 @@ import Navbar from "../GeneralComponents/Navbar";
 import { Bell } from 'lucide-react';
 import userDefault from "../../assets/userDefault.jpg";
 import Slider_features from "./Slider_features.jsx";
-import FeaturePages from "./FeatureSubpages.jsx";
+import FeaturePages from "./OldFeaturePageWIthAnalytics.jsx";
 import {pollenData, uvData, pollutionData} from "./data.js";
 import { pollenAdvice, pollutionAdvice, uvAdvice } from "./advices.js";
 import Tips from "./Tips.jsx";
@@ -27,12 +27,11 @@ const Home = () => {
     }
     return (
         <>
-            <Navbar />
-            <Slider_features activeSubpage={subPage} changeSubpage={setSubPage} />
+            <Top/>
             {/* User Header */}
-            { subPage === "home" ? null : <FeaturePages data={getData[subPage]} dataName={subPage}/> }
-            { subPage === "home" ? null : <Tips tips={getTips[subPage]}/> }
+
             <Metrics/>
+            <Footer/>
         </>
     );
 };

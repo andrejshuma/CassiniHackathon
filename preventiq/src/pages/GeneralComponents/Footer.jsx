@@ -20,26 +20,15 @@ const Footer = () => {
               href="#"
               className="px-3 py-1 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
             >
+              Profile
+            </a>
+            <a
+              href="#"
+              className="px-3 py-1 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
+            >
               Advice
             </a>
-            <a
-              href="#"
-              className="px-3 py-1 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
-            >
-              Sun Heat
-            </a>
-            <a
-              href="#"
-              className="px-3 py-1 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
-            >
-              Pollution
-            </a>
-            <a
-              href="#"
-              className="px-3 py-1 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
-            >
-              Pollen
-            </a>
+
           </div>
         </div>
 
