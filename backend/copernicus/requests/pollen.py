@@ -8,6 +8,9 @@ import geocoder
 from consts import KEY
 
 
+# score = [weight * pref for weight,pref in zip(weights, preferences)]
+
+
 def get_forecast_curr_time_and_lead_time():
     now = datetime.now(ZoneInfo("Europe/Skopje"))
 
