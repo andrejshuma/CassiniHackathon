@@ -15,6 +15,8 @@ import Register from "./pages/Register/Register";
 import SunHeat from "./pages/SunHeat/SunHeat";
 import Test from "./pages/Test";
 import Advice from "./pages/Advice/Advice";
+import Profile from "./pages/Profile/Profile";
+import Stats from "./pages/Stats/Stats";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -31,6 +33,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="/sunheat" element={<SunHeat />} />
         <Route path="/crowd" element={<Crowd />} />
         <Route path="/advice" element={<Advice />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/stats" element={<Stats />} />
       </Routes>
     </Router>
   </StrictMode>

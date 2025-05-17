@@ -69,12 +69,9 @@ const Navbar = () => {
           <div className="flex flex-col gap-y-2 px-2 -mx-4 md:flex-row md:space-x-4 md:mx-10 md:py-0">
             {[
               { to: "/", label: "Home" },
-              { to: "/polution", label: "Pollution" },
-              { to: "/greenareas", label: "Green Areas" },
-              { to: "/polen", label: "Pollen" },
-              { to: "/sunheat", label: "Sun & Heat" },
-              { to: "/crowd", label: "Crowd" },
               { to: "/advice", label: "My Advice" },
+              { to: "/stats", label: "Health Stats" },
+              { to: "/profile", label: "My Profile" },
             ].map(({ to, label }) => (
               <Link
                 key={to}
