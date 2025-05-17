@@ -185,7 +185,8 @@ return pixel;"""
 
     return response
 
-def get_request_ozone():
+def get_request_ozone(latitude, longitude):
+    bbox = get_bbox_from_lat_lng(latitude, longitude)
     evalscript = """const band = "O3";
 var minVal = 0.0;
 var maxVal = 0.36;
@@ -212,7 +213,7 @@ function evaluatePixel(samples) {
         "input": {
             "bounds": {
                 "properties": {"crs": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"},
-                "bbox": [21.331921, 41.896182, 21.531921, 42.096182],
+                "bbox": bbox,
             },
             "data": [
                 {

@@ -1,12 +1,11 @@
 import cdsapi
 import xarray as xr
 import pandas as pd
-
 import os
 import tempfile
+from .consts import KEY
 
 URL = "https://ads.atmosphere.copernicus.eu/api"
-KEY = str(os.getenv("key"))
 
 def request_uv(year, month, day, variable, area):
     dataset = "reanalysis-era5-single-levels"

@@ -16,7 +16,7 @@ function Test() {
 
 	const sendLocation = () => {
 		const success = (position) => {
-			const url = "http://127.0.0.1:8000/uv/";
+			const url = "http://127.0.0.1:8000/api/data/";
 			const data = {
 				latitude: position.coords.latitude,
 				longitude: position.coords.longitude,
@@ -36,7 +36,8 @@ function Test() {
 					return response.json();
 				})
 				.then((result) => {
-					console.log("Success:", result.uv);
+					console.log("uv", result.uv);
+					console.log("uv", result.pollen);
 				})
 				.catch((error) => {
 					console.error("Error:", error);

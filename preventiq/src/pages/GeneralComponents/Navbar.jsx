@@ -74,6 +74,7 @@ const Navbar = () => {
               { to: "/polen", label: "Pollen" },
               { to: "/sunheat", label: "Sun & Heat" },
               { to: "/crowd", label: "Crowd" },
+              { to: "/advice", label: "My Advice" },
             ].map(({ to, label }) => (
               <Link
                 key={to}
