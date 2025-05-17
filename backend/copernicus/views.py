@@ -20,14 +20,9 @@ def get_uv_(request):
             lat = data.get('latitude')
 
 
-            df = get_uv(long, lat)
-
-            df['valid_time'] = df['valid_time'].astype(str)  
-            df = df.fillna(0)
-            json_data = df.to_dict(orient='records')
-
-            print(json_data)
-            return JsonResponse({'data': json_data}, status=200)
+            uv = get_uv(long, lat)
+            
+            return JsonResponse({'uv': uv}, status=200)
         except json.JSONDecodeError:
             return JsonResponse({'error': 'Invalid JSON'}, status=400)
     else:
