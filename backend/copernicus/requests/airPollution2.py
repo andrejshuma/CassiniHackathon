@@ -2,7 +2,7 @@ import requests
 from datetime import datetime, timedelta
 import json
 import math
-
+from population_getter import get_population_from_location
 def haversine(lon1, lat1, lon2, lat2):
     # Calculate the great-circle distance between two points on the Earth
     R = 6371  # Earth radius in kilometers
@@ -13,7 +13,12 @@ def haversine(lon1, lat1, lon2, lat2):
     c = 2 * math.asin(math.sqrt(a))
     return R * c
 
-def get_air_pollution(city, lat, long, max_distance=10):
+def get_air_pollution(lat, long, max_distance=30):
+
+    obj= get_population_from_location(lat, long)
+    city = obj['city']
+    print(city)
+
     sensors=f'https://{city}.pulse.eco/rest/sensor'
     response = requests.get(sensors)
     if response.status_code != 200:
@@ -33,6 +38,8 @@ def get_air_pollution(city, lat, long, max_distance=10):
                 
                 sensor_lat = float(parts[0])
                 sensor_long = float(parts[1])
+
+                # print(sensor_long, sensor_lat)
                 dist = haversine(long, lat, sensor_long, sensor_lat)
                 
                 # Only consider sensors within max_distance
@@ -43,7 +50,6 @@ def get_air_pollution(city, lat, long, max_distance=10):
     
     if not sensors_with_distances:
         return json.dumps([])
-    
     # Sort sensors by distance (closest first)
     sensors_with_distances.sort(key=lambda x: x[1])
     
@@ -52,6 +58,7 @@ def get_air_pollution(city, lat, long, max_distance=10):
     from_time = (now - timedelta(hours=2)).strftime('%Y-%m-%dT%H:%M:%S%%2b01:00')
     
     # Try sensors in order of proximity until we find one with data
+    if len(sensors_with_distances)==0: return {}
     for sensor_entry, dist in sensors_with_distances:
         sensorID = sensor_entry['sensorId']
         
@@ -62,7 +69,6 @@ def get_air_pollution(city, lat, long, max_distance=10):
         if response.status_code == 200:
             try:
                 data = response.json()
-                
                 for entry in data:
                     filtered = {k: entry[k] for k in ('stamp', 'position', 'value') if k in entry}
                     if filtered:
@@ -76,6 +82,6 @@ def get_air_pollution(city, lat, long, max_distance=10):
     # If we reach here, we tried all sensors within range and found no data
     return json.dumps([])
 
-# Get air pollution data for the specified coordinates
-    result = get_air_pollution(city, 41.9, 21.5)
-    return result
+# Example usage
+# print(get_air_pollution(lat=41.934, long=21.3))
+

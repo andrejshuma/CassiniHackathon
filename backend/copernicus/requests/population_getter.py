@@ -38,7 +38,7 @@ def get_population_from_location(lat, lng):
         distance = math.sqrt(pow(lat - city_lat, 2) + pow(lng - city_lng, 2))
         if distance < minimum_distance:
             minimum_distance = distance
-            result_name = city["name"]
+            result_name = city["city"]
             result_pop = city["population"]
 
     return {"city": result_name, "population": result_pop}
