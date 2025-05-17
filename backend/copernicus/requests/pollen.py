@@ -86,3 +86,5 @@ def get_pollen_data_json(lat, lon):
     df.to_json("macedonia_pollen.json", orient="records", date_format="iso")
 
     return df.to_dict(orient="records")
+
+get_pollen_data_json(42.005299, 21.417165)
