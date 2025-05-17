@@ -43,6 +43,13 @@ multiplier_dict = {
 }
 
 def calculate_score(preferences, scores, age):
+    """
+    scores treba da bide lista od normalizirani vrednosti od parametrite vo ovoj redosled:
+    ["uv", "green_density", "city_density", "ozone", "air_pollution", "pollen_density"]
+    preferences treba da bide STRING od edna bolest/alergija slicno until further notice
+    age e int, pol ne ne interesira
+    """
+    # BITNO ^^^^^^
     if preferences == '': return sum(scores)
 
     age_addition = math.math.e ** (0.01*(age-35)-1) if age > 35 else 0
