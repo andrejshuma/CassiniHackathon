@@ -60,23 +60,6 @@ def clean_data(doc, variable):
     data = df.dropna()
     return data, df
 
-# def plot(data, dataframe):
-
-#     plt.figure(figsize=(12, 6))
-
-#     plt.plot(data['valid_time'], data['uv_radiation_J_per_m2'], marker='o', linestyle='-')
-
-#     plt.title("Surface Downward UV Radiation Over Time", fontsize=14)
-#     plt.xlabel("Time", fontsize=12)
-#     plt.ylabel("UV Radiation (J/m²)", fontsize=12)
-
-#     plt.grid(True)
-#     plt.xticks(rotation=45)
-#     plt.tight_layout()
-
-#     plt.show()
-
-    # print(dataframe)
 
 def get_uv(long, lat):
 
