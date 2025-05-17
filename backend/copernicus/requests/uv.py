@@ -1,12 +1,16 @@
 import cdsapi
 import xarray as xr
 import pandas as pd
-# import matplotlib.pyplot as plt
+
 import os
 import tempfile
 
+URL = "https://ads.atmosphere.copernicus.eu/api"
+KEY = str(os.getenv("key"))
+
 def request_uv(year, month, day, variable, area):
     dataset = "reanalysis-era5-single-levels"
+    client = cdsapi.Client(url=URL, key=KEY)
     request = {
         "product_type": ["reanalysis"],
         "year": [year],
