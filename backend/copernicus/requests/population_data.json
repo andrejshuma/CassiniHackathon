@@ -1,0 +1,440 @@
+[
+{
+"city": "Skopje",
+"latitude": 41.9961,
+"longitude": 21.4317,
+"population": "526502"
+},
+{
+"city": "Kumanovo",
+"latitude": 42.1322,
+"longitude": 21.7144,
+"population": "70842"
+},
+{
+"city": "Bitola",
+"latitude": 41.0319,
+"longitude": 21.3347,
+"population": "69287"
+},
+{
+"city": "Prilep",
+"latitude": 41.3464,
+"longitude": 21.5542,
+"population": "63308"
+},
+{
+"city": "Tetovo",
+"latitude": 42.0103,
+"longitude": 20.9714,
+"population": "63176"
+},
+{
+"city": "Shtip",
+"latitude": 41.7358,
+"longitude": 22.1914,
+"population": "42000"
+},
+{
+"city": "Veles",
+"latitude": 41.7153,
+"longitude": 21.7753,
+"population": "40664"
+},
+{
+"city": "Ohrid",
+"latitude": 41.1169,
+"longitude": 20.8019,
+"population": "38818"
+},
+{
+"city": "Strumica",
+"latitude": 41.4375,
+"longitude": 22.6431,
+"population": "33825"
+},
+{
+"city": "Gostivar",
+"latitude": 41.8,
+"longitude": 20.9167,
+"population": "32814"
+},
+{
+"city": "Kochani",
+"latitude": 41.9167,
+"longitude": 22.4125,
+"population": "28330"
+},
+{
+"city": "Struga",
+"latitude": 41.1775,
+"longitude": 20.6789,
+"population": "15009"
+},
+{
+"city": "Debar",
+"latitude": 41.525,
+"longitude": 20.5272,
+"population": "14561"
+},
+{
+"city": "Kriva Palanka",
+"latitude": 42.2017,
+"longitude": 22.3317,
+"population": "13481"
+},
+{
+"city": "Negotino",
+"latitude": 41.4839,
+"longitude": 22.0892,
+"population": "12488"
+},
+{
+"city": "Sveti Nikole",
+"latitude": 41.865,
+"longitude": 21.9425,
+"population": "11728"
+},
+{
+"city": "Probishtip",
+"latitude": 41.9936,
+"longitude": 22.1767,
+"population": "10826"
+},
+{
+"city": "Delchevo",
+"latitude": 41.9661,
+"longitude": 22.7747,
+"population": "9644"
+},
+{
+"city": "Vinica",
+"latitude": 41.8828,
+"longitude": 22.5092,
+"population": "8584"
+},
+{
+"city": "Arachinovo",
+"latitude": 42.0264,
+"longitude": 21.5617,
+"population": "7315"
+},
+{
+"city": "Kichevo",
+"latitude": 41.5142,
+"longitude": 20.9631,
+"population": "7280"
+},
+{
+"city": "Kavadarci",
+"latitude": 41.4328,
+"longitude": 22.0117,
+"population": "6228"
+},
+{
+"city": "Berovo",
+"latitude": 41.7078,
+"longitude": 22.8564,
+"population": "5850"
+},
+{
+"city": "Kratovo",
+"latitude": 42.0783,
+"longitude": 22.175,
+"population": "5401"
+},
+{
+"city": "Gevgelija",
+"latitude": 41.1392,
+"longitude": 22.5025,
+"population": "4967"
+},
+{
+"city": "Vrapchishte",
+"latitude": 41.8337,
+"longitude": 20.8851,
+"population": "4874"
+},
+{
+"city": "Radovish",
+"latitude": 41.6381,
+"longitude": 22.4644,
+"population": "4678"
+},
+{
+"city": "Krushevo",
+"latitude": 41.37,
+"longitude": 21.2483,
+"population": "4104"
+},
+{
+"city": "Chegrane",
+"latitude": 41.8358,
+"longitude": 20.9736,
+"population": "4022"
+},
+{
+"city": "Makedonski Brod",
+"latitude": 41.5133,
+"longitude": 21.2153,
+"population": "3643"
+},
+{
+"city": "Demir Kapija",
+"latitude": 41.4114,
+"longitude": 22.2422,
+"population": "3275"
+},
+{
+"city": "Kuchevishte",
+"latitude": 42.1097,
+"longitude": 21.418,
+"population": "3167"
+},
+{
+"city": "Tearce",
+"latitude": 42.0775,
+"longitude": 21.0519,
+"population": "3038"
+},
+{
+"city": "Bogdanci",
+"latitude": 41.2031,
+"longitude": 22.5728,
+"population": "2951"
+},
+{
+"city": "Forino",
+"latitude": 41.8242,
+"longitude": 20.9625,
+"population": "2809"
+},
+{
+"city": "Rashche",
+"latitude": 42.0225,
+"longitude": 21.2506,
+"population": "2697"
+},
+{
+"city": "Rosoman",
+"latitude": 41.5161,
+"longitude": 21.9497,
+"population": "2553"
+},
+{
+"city": "Demir Hisar",
+"latitude": 41.2208,
+"longitude": 21.2031,
+"population": "2431"
+},
+{
+"city": "Vevchani",
+"latitude": 41.2403,
+"longitude": 20.5931,
+"population": "2359"
+},
+{
+"city": "Gradsko",
+"latitude": 41.5775,
+"longitude": 21.9428,
+"population": "2219"
+},
+{
+"city": "Valandovo",
+"latitude": 41.3169,
+"longitude": 22.5611,
+"population": "1992"
+},
+{
+"city": "Krivogashtani",
+"latitude": 41.3358,
+"longitude": 21.3331,
+"population": "1870"
+},
+{
+"city": "Pehchevo",
+"latitude": 41.7592,
+"longitude": 22.8906,
+"population": "1687"
+},
+{
+"city": "Preglovo",
+"latitude": 41.4667,
+"longitude": 21.1167,
+"population": "1584"
+},
+{
+"city": "Zrnovci",
+"latitude": 41.8542,
+"longitude": 22.4442,
+"population": "1534"
+},
+{
+"city": "Novaci",
+"latitude": 41.0419,
+"longitude": 21.4561,
+"population": "1283"
+},
+{
+"city": "Bosilovo",
+"latitude": 41.4406,
+"longitude": 22.7278,
+"population": "1273"
+},
+{
+"city": "Mogila",
+"latitude": 41.1083,
+"longitude": 21.3786,
+"population": "1262"
+},
+{
+"city": "Novo Selo",
+"latitude": 41.4128,
+"longitude": 22.88,
+"population": "1246"
+},
+{
+"city": "Konche",
+"latitude": 41.4958,
+"longitude": 22.3825,
+"population": "915"
+},
+{
+"city": "Rostushe",
+"latitude": 41.61,
+"longitude": 20.6,
+"population": "872"
+},
+{
+"city": "Jegunovce",
+"latitude": 42.0731,
+"longitude": 21.1231,
+"population": "846"
+},
+{
+"city": "Rankovce",
+"latitude": 42.1719,
+"longitude": 22.1167,
+"population": "744"
+},
+{
+"city": "Sopishte",
+"latitude": 41.95,
+"longitude": 21.4333,
+"population": "690"
+},
+{
+"city": "Obleshevo",
+"latitude": 41.8833,
+"longitude": 22.3339,
+"population": "673"
+},
+{
+"city": "Vasilevo",
+"latitude": 41.4758,
+"longitude": 22.6417,
+"population": "630"
+},
+{
+"city": "Karbinci",
+"latitude": 41.8167,
+"longitude": 22.2375,
+"population": "574"
+},
+{
+"city": "Karacali",
+"latitude": 41.7817,
+"longitude": 21.9025,
+"population": "521"
+},
+{
+"city": "Staro Nagorichane",
+"latitude": 42.2,
+"longitude": 21.83,
+"population": "493"
+},
+{
+"city": "Brvenica",
+"latitude": 41.9672,
+"longitude": 20.9808,
+"population": "449"
+},
+{
+"city": "Centar Zhupa / Vapa",
+"latitude": 41.4775,
+"longitude": 20.5578,
+"population": "354"
+},
+{
+"city": "Dolneni",
+"latitude": 41.4264,
+"longitude": 21.4536,
+"population": "300"
+},
+{
+"city": "Belchishta",
+"latitude": 41.3028,
+"longitude": 20.8303,
+"population": "297"
+},
+{
+"city": "Chucher-Sandevo",
+"latitude": 42.0975,
+"longitude": 21.3877,
+"population": "274"
+},
+{
+"city": "Zelenikovo",
+"latitude": 41.8867,
+"longitude": 21.5869,
+"population": "272"
+},
+{
+"city": "Petrovec",
+"latitude": 41.9389,
+"longitude": 21.615,
+"population": "121"
+},
+{
+"city": "Zhelino",
+"latitude": 41.9794,
+"longitude": 21.0619,
+"population": "105"
+},
+{
+"city": "Star Dojran",
+"latitude": 41.1865,
+"longitude": 22.7203,
+"population": "105"
+},
+{
+"city": "Studenichani",
+"latitude": 41.9158,
+"longitude": 21.5306,
+"population": "59"
+},
+{
+"city": "Bogovinje",
+"latitude": 41.9233,
+"longitude": 20.9133,
+"population": "25"
+},,
+{
+"city": "Lipkovo",
+"latitude": 42.1553,
+"longitude": 21.5875,
+"population": "22308"
+},
+{
+"city": "Makedonska Kamenica",
+"latitude": 42.0208,
+"longitude": 22.5876,
+"population": "6439"
+},
+{
+"city": "Resen",
+"latitude": 41.0893,
+"longitude": 21.0109,
+"population": "14373"
+}
+]

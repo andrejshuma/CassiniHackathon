@@ -1,12 +1,11 @@
 import cdsapi
 import xarray as xr
 import pandas as pd
-
 import os
 import tempfile
+from .consts import KEY
 
 URL = "https://ads.atmosphere.copernicus.eu/api"
-KEY = str(os.getenv("key"))
 
 def request_uv(year, month, day, variable, area):
     dataset = "reanalysis-era5-single-levels"
@@ -82,12 +81,18 @@ def get_uv(long, lat):
     # area = [42.037819, 21.328068, 41.947234, 21.552944]
     area = [lat + 0.02, long - 0.02, lat - 0.02, long - 0.02]
     doc = request_uv(year="2025", month="01", day="10", variable="downward_uv_radiation_at_the_surface", area=area)
-    cleaned_data, dataframe = clean_data(doc=doc, variable="uvb")
+    cleaned_data, df = clean_data(doc=doc, variable="uvb")
 
     # print(dataframe)
 
     os.remove(doc)
 
-    return dataframe
+    df['valid_time'] = df['valid_time'].astype(str)  
 
-    # return plot(data=cleaned_data, dataframe=dataframe)
+    df['valid_time'] = pd.to_datetime(df['valid_time'])
+    df = df[df['valid_time'].dt.day == int("10")]  
+    df['valid_time'] = df['valid_time'].astype(str)
+    df = df.fillna(0)
+    json_data = df.to_dict(orient='records')
+
+    return json_data
