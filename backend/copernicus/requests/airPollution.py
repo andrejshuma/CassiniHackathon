@@ -53,4 +53,3 @@ def request_air_pollution(year, month, day, variable, country):
         return all_data
 
 
-output_json_file = request_air_pollution("2025", "04", ["20"], "particulate_matter_10um", "north_macedonia")
