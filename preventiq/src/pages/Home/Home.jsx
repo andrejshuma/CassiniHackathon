@@ -31,6 +31,7 @@ const Home = () => {
             {/* User Header */}
 
             <Metrics/>
+            <Footer/>
         </>
     );
 };
