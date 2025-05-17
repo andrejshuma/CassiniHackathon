@@ -27,12 +27,11 @@ const Home = () => {
     }
     return (
         <>
-            <Navbar />
-            <Slider_features activeSubpage={subPage} changeSubpage={setSubPage} />
+            <Top/>
             {/* User Header */}
-            { subPage === "home" ? null : <FeaturePages data={getData[subPage]} dataName={subPage}/> }
-            { subPage === "home" ? null : <Tips tips={getTips[subPage]}/> }
+
             <Metrics/>
+            <Footer/>
         </>
     );
 };
