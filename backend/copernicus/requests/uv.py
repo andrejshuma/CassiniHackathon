@@ -3,11 +3,11 @@ import xarray as xr
 import pandas as pd
 import os
 import tempfile
-from .consts import KEY
-
+from consts import KEY
+from testingUv import categorize_uv_index, get_current_hour_uv, uv_radiation_to_index
 
 URL = "https://ads.atmosphere.copernicus.eu/api"
-KEY="457347ba-9776-4077-992b-c673b0776e6f"
+KEY= "457347ba-9776-4077-992b-c673b0776e6f"
 
 def request_uv(year, month, day, variable, area):
     dataset = "reanalysis-era5-single-levels"
@@ -61,13 +61,14 @@ def clean_data(doc, variable):
     return data, df
 
 
+
+
 def get_uv(long, lat):
     # area = [42.037819, 21.328068, 41.947234, 21.552944]
     area = [lat + 0.02, long - 0.02, lat - 0.02, long - 0.02]
     doc = request_uv(year="2025", month="05", day="08", variable="downward_uv_radiation_at_the_surface", area=area)
     cleaned_data, df = clean_data(doc=doc, variable="uvb")
     print(cleaned_data)
-    # print(dataframe)
 
     os.remove(doc)
 
@@ -76,4 +77,11 @@ def get_uv(long, lat):
     df['valid_time'] = pd.to_datetime(df['valid_time'])
     df = df.fillna(0)
     json_data = df.to_dict(orient='records')
-    return json_data
+
+    a = get_uv(21.4314, 41.9965)
+    b = get_current_hour_uv(a)['uv_radiation_J_per_m2']
+    c = uv_radiation_to_index(b,3600)
+    d = (categorize_uv_index(c))
+
+
+

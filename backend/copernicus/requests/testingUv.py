@@ -4,14 +4,13 @@ import datetime
 
 def get_current_hour_uv(data_array):
     now=datetime.datetime.now()
-    current_hour = f"2025-01-10 {now.hour}:00:00"
+    # current_hour = f"2025-05-08 {now.hour}:00:00"
+    current_hour = f"2025-05-08 12:00:00"
     
     for entry in data_array:
-        # if entry["valid_time"] == current_hour:
-        if entry["valid_time"] == "2025-01-10 11:00:00":
+        if str(entry["valid_time"]) == current_hour:
             return entry
     
-    # If no exact match, you could return None or the closest hour
     return None
 
 def uv_radiation_to_index(uv_radiation_j_per_m2, duration_seconds):
@@ -19,6 +18,7 @@ def uv_radiation_to_index(uv_radiation_j_per_m2, duration_seconds):
     if duration_seconds <= 0:
         raise ValueError("Duration must be a positive number of seconds.")
 
+    
     uv_power_w_per_m2 = uv_radiation_j_per_m2 / duration_seconds
     uv_index = uv_power_w_per_m2/25
 
@@ -126,6 +126,6 @@ dataArray=[
 	{ "valid_time": "2025-01-10 23:00:00", "uv_radiation_J_per_m2": 0.0 }
 ]
 
-uv_radiaton = get_current_hour_uv(dataArray)['uv_radiation_J_per_m2']
-categorize_uv_index(uv_radiation_to_index(uv_radiaton, 3600))
+# uv_radiaton = get_current_hour_uv(dataArray)['uv_radiation_J_per_m2']
+# categorize_uv_index(uv_radiation_to_index(uv_radiaton, 3600))
 
