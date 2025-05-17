@@ -31,6 +31,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="/sunheat" element={<SunHeat />} />
         <Route path="/crowd" element={<Crowd />} />
         <Route path="/advice" element={<Advice />} />
+        <Route path="/home" element={<Home />} />
+
       </Routes>
     </Router>
   </StrictMode>

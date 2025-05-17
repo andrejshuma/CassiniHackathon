@@ -5,6 +5,7 @@ import Slider_features from "./Slider_features.jsx";
 
 import Top from "./HomepageView/Top.jsx";
 import Metrics from "./HomepageView/Metrics.jsx";
+import Footer from "../GeneralComponents/Footer.jsx";
 
 
 const Home = () => {

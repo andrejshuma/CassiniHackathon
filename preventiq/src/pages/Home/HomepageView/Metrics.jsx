@@ -1,6 +1,8 @@
 import { Activity, Heart, MessageCircle, Phone } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function HeartHealthMetrics() {
+    const navigate = useNavigate();
     return (
         <div className="p-4 max-w-md mx-auto">
             {/* Health Tips Card with 3D Heart */}
@@ -14,7 +16,10 @@ export default function HeartHealthMetrics() {
                         <p className="text-sm text-gray-700">Air quality requires caution</p>
                         <p className="text-sm text-gray-700">Try indoor activities today</p>
                     </div>
-                    <button className="bg-white border border-gray-300 text-gray-800 px-4 py-1 rounded-full text-sm">
+                    <button
+                        className="bg-white border border-gray-300 text-gray-800 px-4 py-1 rounded-full text-sm"
+                        onClick={() => navigate('/advice')} // Navigate to Advice page
+                    >
                         See Details
                     </button>
                 </div>
@@ -164,7 +169,7 @@ export default function HeartHealthMetrics() {
             </div>
 
 
-            {/* Doctor Contact */}
+
             <div className="bg-yellow-100 rounded-3xl p-4 flex justify-between items-center">
                 <div className="flex items-center space-x-3">
                     <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center overflow-hidden">
