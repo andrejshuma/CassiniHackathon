@@ -1,9 +1,10 @@
 from django.contrib import admin
 from django.urls import path
-from copernicus.views import index, get_data
+from copernicus.views import index, get_data, calculate
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('index/', index),
-    path('api/data/', get_data)
+    path('api/data/', get_data),
+    path('api/calculate/', calculate)
 ]
