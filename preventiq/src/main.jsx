@@ -17,12 +17,14 @@ import Test from "./pages/Test";
 import Advice from "./pages/Advice/Advice";
 import Profile from "./pages/Profile/Profile";
 import Stats from "./pages/Stats/Stats";
+import FeaturePage from "./pages/FeatureIndexes/FeaturePage.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <Router>
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/1" element={<FeaturePage />} />
         <Route path="/register" element={<Register />} />
         <Route path="/register2" element={<Register2 />} />
         <Route path="/register3" element={<Register3 />} />
