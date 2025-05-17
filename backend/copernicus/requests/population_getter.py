@@ -70,6 +70,5 @@ def validate_data_json(data):
         if city_name != municipality:
             line['city'] = municipality
             print(city_name + " " + municipality)
-    return data
 
-print(get_population_from_location(41.718869+0.001, 21.7705695))
+# print(get_population_from_location(41.718869+0.001, 21.7705695))
