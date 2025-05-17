@@ -213,7 +213,7 @@ function evaluatePixel(samples) {
         "input": {
             "bounds": {
                 "properties": {"crs": "http://www.opengis.net/def/crs/OGC/1.3/CRS84"},
-                "bbox": bbox,
+                "bbox": get_bbox_from_lat_lng(latitude, longitude),
             },
             "data": [
                 {

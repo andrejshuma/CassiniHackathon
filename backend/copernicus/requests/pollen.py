@@ -1,4 +1,5 @@
 import cdsapi
+import json
 from datetime import datetime
 from zoneinfo import ZoneInfo
 import xarray as xr
@@ -29,7 +30,7 @@ def get_forecast_curr_time_and_lead_time():
     return forecast_date, base_time_str, now.hour
 
 
-def get_pollen_data_ncfile():
+def get_pollen_data_ncfile(lat, lng):
     date, time, time_now = get_forecast_curr_time_and_lead_time()
     lead_time_arr = [str(t) for t in range(int(time_now) + 1)]
 
@@ -59,7 +60,7 @@ def get_pollen_data_ncfile():
 
 
 def get_pollen_data_json(lat, lon):
-    get_pollen_data_ncfile()
+    get_pollen_data_ncfile(lat, lon)
 
     nc_file_name = 'macedonia_pollen_forecast.nc'
 
@@ -86,9 +87,20 @@ def get_pollen_data_json(lat, lon):
 
     # 5. Конвертирај во pandas DataFrame
     df = ds_mk.to_dataframe().reset_index()
-    df.to_csv("macedonia_pollen.csv", index=False)
-    df.to_json("macedonia_pollen.json", orient="records", date_format="iso")
+    # df.to_csv("macedonia_pollen.csv", index=False)
+    # df.to_json("macedonia_pollen.json", orient="records", date_format="iso")
+    data = df.to_dict(orient="records")[-1]
+    scaled = dict()
+    scaled["apg_conc_scaled"] = data['apg_conc'] / 50 if data['apg_conc'] else 1
+    scaled["bpg_conc_scaled"] = data['bpg_conc'] / 100 if data['bpg_conc'] else 1
+    scaled["gpg_conc_scaled"] = data['gpg_conc'] / 20 if data['gpg_conc'] else 1
+    scaled["mpg_conc_scaled"] = data['mpg_conc'] / 20 if data['mpg_conc'] else 1
+    scaled["opg_conc_scaled"] = data['opg_conc'] / 100 if data['opg_conc'] else 1
+    scaled["rwpg_conc_scaled"] = data['rwpg_conc'] / 20 if data['rwpg_conc'] else 1
+    # with open('macedonia_pollen_scaled.json', 'w') as file:
+    #     json.dump(scaled, file)
+    ds.close()
+    os.remove('macedonia_pollen_forecast.nc')
+    return scaled
 
-    return df.to_dict(orient="records")
-
-get_pollen_data_json(42.005299, 21.417165)
+get_pollen_data_json(41.006317, 21.123695)
