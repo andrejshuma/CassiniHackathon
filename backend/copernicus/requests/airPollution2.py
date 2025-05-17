@@ -2,8 +2,8 @@ import requests
 from datetime import datetime, timedelta
 import json
 import math
+from .population_getter import get_population_from_location
 
-from population_getter import get_population_from_location
 def haversine(lon1, lat1, lon2, lat2):
     # Calculate the great-circle distance between two points on the Earth
     R = 6371  # Earth radius in kilometers
@@ -132,4 +132,4 @@ def get_air_pollution(lat, long, max_distance=30, city='Skopje'):
     # If we reach here, we tried all sensors within range and found no data
     return json.dumps([])
 
-print(get_air_pollution(lat=41.9965, long=21.4314, city="Skopje"))
+# print(get_air_pollution(lat=41.9965, long=21.4314, city="Skopje"))

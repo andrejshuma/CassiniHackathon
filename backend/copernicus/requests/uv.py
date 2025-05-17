@@ -3,8 +3,8 @@ import xarray as xr
 import pandas as pd
 import os
 import tempfile
-from consts import KEY
-from testingUv import categorize_uv_index, get_current_hour_uv, uv_radiation_to_index
+from .consts import KEY
+from .testingUv import categorize_uv_index, get_current_hour_uv, uv_radiation_to_index
 
 URL = "https://ads.atmosphere.copernicus.eu/api"
 KEY= "457347ba-9776-4077-992b-c673b0776e6f"
@@ -78,6 +78,7 @@ def get_uv(long, lat):
     df = df.fillna(0)
     json_data = df.to_dict(orient='records')
 
+    # lmao
     a = get_uv(21.4314, 41.9965)
     b = get_current_hour_uv(a)['uv_radiation_J_per_m2']
     c = uv_radiation_to_index(b,3600)

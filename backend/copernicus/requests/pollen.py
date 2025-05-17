@@ -104,3 +104,4 @@ def get_pollen_data_json(lat, lon):
     os.remove('macedonia_pollen_forecast.nc')
     return scaled
 
+# print(get_pollen_data_json(lat=41.9965, lon=21.4314))

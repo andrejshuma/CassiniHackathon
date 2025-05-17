@@ -67,4 +67,4 @@ def ozone_density(latitude, longitude):
     plt.colorbar(cmap=cmap)
     plt.title("Ozone Concentration (Yellow = High)", fontsize=14)
     plt.show()
-    return {"ozone": values[idx] / 255}
+    return values[idx] / 255
