@@ -9,6 +9,8 @@ function MultiStepForm() {
     username: "",
     emailAddress: "",
     password: "",
+    gender: "",
+    age: "",
     allergies: {
       sunAllergy: "",
       airAllergy: "",
@@ -29,6 +31,7 @@ function MultiStepForm() {
 
   const steps = [
     "Account Information",
+    "Personal Details",
     "Allergies",
     "Medical Conditions",
     "Health Advice",
@@ -50,7 +53,7 @@ function MultiStepForm() {
 
   const handleNext = () => {
     if (currentStep < steps.length - 1) {
-      if (currentStep === 2) {
+      if (currentStep === 3) {
         // When moving to the health advice step, show loading first
         setLoading(true);
         setTimeout(() => {
@@ -239,8 +242,49 @@ function MultiStepForm() {
             </div>
           )}
 
-          {/* Step 2 - Allergies */}
+          {/* Step 2 - Personal Details (Gender and Age) */}
           {currentStep === 1 && (
+            <div className="space-y-4">
+              <h2 className="text-lg font-semibold">Personal Details</h2>
+              <div className="grid grid-cols-1 gap-4 mt-4">
+                <div>
+                  <label htmlFor="gender" className="text-sm">
+                    Gender
+                  </label>
+                  <select
+                    id="gender"
+                    value={formData.gender}
+                    onChange={handleInputChange}
+                    className="block w-full px-4 py-2 mt-1 text-sm border border-gray-200 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  >
+                    <option value="">Select gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                    <option value="prefer-not-to-say">Prefer not to say</option>
+                  </select>
+                </div>
+
+                <div>
+                  <label htmlFor="age" className="text-sm">
+                    Age
+                  </label>
+                  <input
+                    id="age"
+                    type="number"
+                    min="0"
+                    max="120"
+                    value={formData.age}
+                    onChange={handleInputChange}
+                    className="block w-full px-4 py-2 mt-1 text-sm border border-gray-200 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                  />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Step 3 - Allergies */}
+          {currentStep === 2 && (
             <div className="space-y-4">
               <h2 className="text-lg font-semibold">Allergies</h2>
               <div>
@@ -287,8 +331,8 @@ function MultiStepForm() {
             </div>
           )}
 
-          {/* Step 3 - Medical Conditions */}
-          {currentStep === 2 && (
+          {/* Step 4 - Medical Conditions */}
+          {currentStep === 3 && (
             <div className="space-y-4">
               <h2 className="text-lg font-semibold">Medical Conditions</h2>
               <div>
@@ -316,8 +360,8 @@ function MultiStepForm() {
             </div>
           )}
 
-          {/* Step 4 - Loading and Health Advice */}
-          {currentStep === 3 && (
+          {/* Step 5 - Loading and Health Advice */}
+          {currentStep === 4 && (
             <div className="space-y-4 flex flex-col items-center justify-center min-h-40">
               {loading ? (
                 <div className="text-center py-8">
