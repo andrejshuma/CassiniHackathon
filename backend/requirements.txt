@@ -6,3 +6,7 @@ django-debug-toolbar==5.0.1
 xarray==2025.1.1
 cdsapi==0.7.6
 geocoder==1.38.1
+tifffile==2025.5.10
+sentinelhub==3.11.1
+requests_oauthlib==2.0.0
+oauthlib==3.2.2

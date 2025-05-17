@@ -5,6 +5,7 @@ import xarray as xr
 import os
 import pandas as pd
 import geocoder
+from .consts import KEY
 
 
 def get_forecast_curr_time_and_lead_time():
@@ -47,8 +48,9 @@ def get_pollen_data_ncfile():
         "data_format": "netcdf",
         "area": [42.5, 20.5, 40.8, 23]
     }
+    URL = "https://ads.atmosphere.copernicus.eu/api"
 
-    client = cdsapi.Client()
+    client = cdsapi.Client(url=URL, key=KEY)
     client.retrieve(dataset, request).download("macedonia_pollen_forecast.nc")
 
 

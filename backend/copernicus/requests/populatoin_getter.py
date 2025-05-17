@@ -50,7 +50,6 @@ def validate_data_json(data):
     for line in data:
         city_name = line['city']
         municipality = get_municipality_from_location(line["latitude"], line["longitude"])
-        if city_name == 'DraДЌevo': continue
         if city_name != municipality:
             line['city'] = municipality
             print(city_name + " " + municipality)

@@ -12,13 +12,6 @@ def city_density(latitude, longitude):
     else:
         intensity = img_array.mean(axis=2)
 
-    # plt.figure(figsize=(10, 10))
-    # plt.imshow(intensity, cmap='hot', interpolation='nearest')
-    # plt.title("Urban Density Map of Skopje (Raw)")
-    # plt.axis('off')
-    # plt.colorbar(label='Density Intensity')
-    # plt.show()
-
     return {"city_density_in_location": float(np.mean(intensity) / 255)}
 
 print(city_density(42.005507, 21.411283))
