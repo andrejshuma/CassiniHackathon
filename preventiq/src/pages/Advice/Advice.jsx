@@ -65,7 +65,7 @@ const Advice = () => {
     <div>
       <Navbar />
       <div
-        className="flex flex-col h-screen max-w-md mx-auto"
+        className="flex flex-col h-[90vh] max-w-md mx-auto"
         data-theme="nord"
       >
         {/* Header */}
