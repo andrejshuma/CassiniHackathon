@@ -1,34 +1,7 @@
 import styled from 'styled-components'
 import InfoBox from "./InfoBox.jsx";
 
-export default function FeaturePage({ featureName }) {
-    const data = [
-        {
-            "name": "Pollen Tree",
-            "index": 0.2,
-            "description": "Pollen Three is a type of pollen that is common in the spring and summer months.",
-        },
-        {
-            "name": "Pollen Weed",
-            "index": 0.5,
-            "description": "Pollen Weed is a type of pollen that is common in the spring and summer months.",
-        },
-        {
-            "name": "Pollen Grass",
-            "index": 0.8,
-            "description": "Pollen v is a type of pollen that is common in the spring and summer months.",
-        },
-        {
-            "name": "Pollen Tree",
-            "index": 0.2,
-            "description": "Pollen Three is a type of pollen that is common in the spring and summer months.",
-        },
-        {
-            "name": "Pollen Weed",
-            "index": 0.5,
-            "description": "Pollen Weed is a type of pollen that is common in the spring and summer months.",
-        },
-    ]
+export default function FeaturePage({ data }) {
     return (
         <Container>
             <h1>Pollen Features</h1>
