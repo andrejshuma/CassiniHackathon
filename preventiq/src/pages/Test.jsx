@@ -36,7 +36,7 @@ function Test() {
 					return response.json();
 				})
 				.then((result) => {
-					console.log("Success:", result);
+					console.log("Success:", result.uv);
 				})
 				.catch((error) => {
 					console.error("Error:", error);

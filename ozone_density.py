@@ -1,14 +1,10 @@
 from satellite_requests.stat_collector import get_request_city_density, get_request_ozone
-import matplotlib.pyplot as plt
+from io import BytesIO
 import tifffile as tiff
-import numpy as np
 
-def ozone(latitude, longitude):
+def ozone_density(latitude, longitude):
     response = get_request_ozone(latitude, longitude).content
-    with open('ozone.tiff', 'wb') as file:
-        file.write(response)
-
-    img_array = tiff.imread('ozone.tiff')
+    img_array = tiff.imread(BytesIO(response))
     if img_array.ndim == 2:
         intensity = img_array
     else:
@@ -23,4 +19,4 @@ def ozone(latitude, longitude):
 
     return intensity[int(len(intensity) / 2)][int(len(intensity[0]) / 2)]
 
-print(ozone(42.005507, 21.411283))
+print(ozone_density(42.005507, 21.411283))
