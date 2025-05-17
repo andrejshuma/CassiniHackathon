@@ -14,7 +14,6 @@ const Home = () => {
         <>
 
             {/* User Header */}
-
             <Top/>
             <Slider_features activeSubpage={subPage} changeSubpage={setSubPage} />
             <Metrics/>

@@ -87,14 +87,35 @@ export default function HeartHealthMetrics() {
                 </div>
 
                 {/* Pollen Count */}
-                <div className="bg-gray-100 rounded-3xl p-4">
-                    <div className="w-10 h-10 mb-6 flex items-center justify-center" >
-                        <svg viewBox="0 0 24 24" width="35" height="35" className="text-gray-700">
-                            <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" strokeWidth="2"/>
-                            <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
-                                  stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
-                        </svg>
-                    </div>
+                <div className="bg-gray-100 rounded-3xl p-4">   <div className="w-10 h-10 mb-6 flex items-center justify-center" >
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" className="text-gray-700">
+                        <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+
+
+                        <circle cx="12" cy="5" r="1.5" fill="currentColor"/>
+                        <circle cx="12" cy="19" r="1.5" fill="currentColor"/>
+                        <circle cx="5" cy="12" r="1.5" fill="currentColor"/>
+                        <circle cx="19" cy="12" r="1.5" fill="currentColor"/>
+
+
+                        <circle cx="7.5" cy="7.5" r="1.5" fill="currentColor"/>
+                        <circle cx="16.5" cy="16.5" r="1.5" fill="currentColor"/>
+                        <circle cx="7.5" cy="16.5" r="1.5" fill="currentColor"/>
+                        <circle cx="16.5" cy="7.5" r="1.5" fill="currentColor"/>
+
+
+                        <line x1="12" y1="2" x2="12" y2="3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="12" y1="20.5" x2="12" y2="22" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="2" y1="12" x2="3.5" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="20.5" y1="12" x2="22" y2="12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+
+
+                        <line x1="4.5" y1="4.5" x2="6" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="18" y1="18" x2="19.5" y2="19.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="4.5" y1="19.5" x2="6" y2="18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        <line x1="18" y1="6" x2="19.5" y2="4.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                </div>
                     <div>
                         <p className="text-sm text-gray-700">Pollen level</p>
                         <div className="flex items-baseline">
@@ -103,7 +124,45 @@ export default function HeartHealthMetrics() {
                         </div>
                     </div>
                 </div>
+
+
+
+                <div className="bg-gray-100 rounded-3xl p-4">
+                    <svg viewBox="0 0 24 24" width="35" height="35" className="text-gray-700">
+                        <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" strokeWidth="2"/>
+                        <path d="M12 2v4M12 18v4M2 12h4M18 12h4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"
+                              stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+                    </svg>
+                    <div>
+                        <p className="text-sm text-gray-700">UV index</p>
+                        <div className="flex items-baseline">
+                            <span className="text-3xl font-bold text-gray-700">5</span>
+                            <span className="text-lg text-gray-500"> / 10</span>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div className="bg-gray-100 rounded-3xl p-4">
+                    <svg viewBox="0 0 24 24" width="35" height="35" className="text-gray-700" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                        <path d="M12 21v-6" />
+                        <path d="M12 15c-1.5-3-5-4-8-4 1.5 3 5 4 8 4z" />
+                        <path d="M12 15c1.5-3 5-4 8-4-1.5 3-5 4-8 4z" />
+                        <circle cx="12" cy="12" r="0.5" fill="currentColor" />
+                    </svg>
+
+                    <div>
+                        <p className="text-sm text-gray-700">Green coverage</p>
+                        <div className="flex items-baseline">
+                            <span className="text-3xl font-bold text-gray-700">32%</span>
+
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
+
 
             {/* Doctor Contact */}
             <div className="bg-yellow-100 rounded-3xl p-4 flex justify-between items-center">
