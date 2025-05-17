@@ -31,7 +31,7 @@ def transform_mk_json():
         data = list(reader(file))[1:]
 
     result = []
-    for line in data[1:]:
+    for line in data:
         entry = {
             'city': line[0],
             'latitude': float(line[1]),
@@ -40,5 +40,18 @@ def transform_mk_json():
         }
         result.append(entry)
 
+    result = validate_data_json(result)
+    print(result)
+
     with open('population_data.json', 'w') as file:
         json.dump(result, file, indent=0)
+
+def validate_data_json(data):
+    for line in data:
+        city_name = line['city']
+        municipality = get_municipality_from_location(line["latitude"], line["longitude"])
+        if city_name == 'DraДЌevo': continue
+        if city_name != municipality:
+            line['city'] = municipality
+            print(city_name + " " + municipality)
+    return data 

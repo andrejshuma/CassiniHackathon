@@ -1,5 +1,11 @@
 [
 {
+"city": "Skopje",
+"latitude": 41.9961,
+"longitude": 21.4317,
+"population": "526502"
+},
+{
 "city": "Kumanovo",
 "latitude": 42.1322,
 "longitude": 21.7144,
@@ -24,7 +30,7 @@
 "population": "63176"
 },
 {
-"city": "\u0415\u00a0tip",
+"city": "Shtip",
 "latitude": 41.7358,
 "longitude": 22.1914,
 "population": "42000"
@@ -54,16 +60,10 @@
 "population": "32814"
 },
 {
-"city": "Ko\u0414\u040cani",
+"city": "Kochani",
 "latitude": 41.9167,
 "longitude": 22.4125,
 "population": "28330"
-},
-{
-"city": "Dra\u0414\u040cevo",
-"latitude": 41.9367,
-"longitude": 21.5217,
-"population": "19246"
 },
 {
 "city": "Struga",
@@ -96,13 +96,13 @@
 "population": "11728"
 },
 {
-"city": "Probi\u0415\u040etip",
+"city": "Probishtip",
 "latitude": 41.9936,
 "longitude": 22.1767,
 "population": "10826"
 },
 {
-"city": "Del\u0414\u040cevo",
+"city": "Delchevo",
 "latitude": 41.9661,
 "longitude": 22.7747,
 "population": "9644"
@@ -114,13 +114,13 @@
 "population": "8584"
 },
 {
-"city": "Ara\u0414\u040cinovo",
+"city": "Arachinovo",
 "latitude": 42.0264,
 "longitude": 21.5617,
 "population": "7315"
 },
 {
-"city": "Ki\u0414\u040cevo",
+"city": "Kichevo",
 "latitude": 41.5142,
 "longitude": 20.9631,
 "population": "7280"
@@ -150,25 +150,25 @@
 "population": "4967"
 },
 {
-"city": "Vrap\u0414\u040ci\u0415\u040ete",
+"city": "Vrapchishte",
 "latitude": 41.8337,
 "longitude": 20.8851,
 "population": "4874"
 },
 {
-"city": "Radovi\u0415\u040e",
+"city": "Radovish",
 "latitude": 41.6381,
 "longitude": 22.4644,
 "population": "4678"
 },
 {
-"city": "Kru\u0415\u040eevo",
+"city": "Krushevo",
 "latitude": 41.37,
 "longitude": 21.2483,
 "population": "4104"
 },
 {
-"city": "\u0414\u040aegrane",
+"city": "Chegrane",
 "latitude": 41.8358,
 "longitude": 20.9736,
 "population": "4022"
@@ -186,7 +186,7 @@
 "population": "3275"
 },
 {
-"city": "Ku\u0414\u040cevi\u0415\u040ete",
+"city": "Kuchevishte",
 "latitude": 42.1097,
 "longitude": 21.418,
 "population": "3167"
@@ -210,7 +210,7 @@
 "population": "2809"
 },
 {
-"city": "Ra\u0415\u040e\u0414\u040ce",
+"city": "Rashche",
 "latitude": 42.0225,
 "longitude": 21.2506,
 "population": "2697"
@@ -228,7 +228,7 @@
 "population": "2431"
 },
 {
-"city": "Vev\u0414\u040cani",
+"city": "Vevchani",
 "latitude": 41.2403,
 "longitude": 20.5931,
 "population": "2359"
@@ -246,19 +246,19 @@
 "population": "1992"
 },
 {
-"city": "Krivoga\u0415\u040etani",
+"city": "Krivogashtani",
 "latitude": 41.3358,
 "longitude": 21.3331,
 "population": "1870"
 },
 {
-"city": "Peh\u0414\u040cevo",
+"city": "Pehchevo",
 "latitude": 41.7592,
 "longitude": 22.8906,
 "population": "1687"
 },
 {
-"city": "Plasnica",
+"city": "Preglovo",
 "latitude": 41.4667,
 "longitude": 21.1167,
 "population": "1584"
@@ -294,13 +294,13 @@
 "population": "1246"
 },
 {
-"city": "Kon\u0414\u040ce",
+"city": "Konche",
 "latitude": 41.4958,
 "longitude": 22.3825,
 "population": "915"
 },
 {
-"city": "Rostu\u0415\u040ea",
+"city": "Rostushe",
 "latitude": 41.61,
 "longitude": 20.6,
 "population": "872"
@@ -318,13 +318,13 @@
 "population": "744"
 },
 {
-"city": "Sopi\u0415\u040ete",
+"city": "Sopishte",
 "latitude": 41.95,
 "longitude": 21.4333,
 "population": "690"
 },
 {
-"city": "Oble\u0415\u040eevo",
+"city": "Obleshevo",
 "latitude": 41.8833,
 "longitude": 22.3339,
 "population": "673"
@@ -342,13 +342,13 @@
 "population": "574"
 },
 {
-"city": "Lozovo",
+"city": "Karacali",
 "latitude": 41.7817,
 "longitude": 21.9025,
 "population": "521"
 },
 {
-"city": "Staro Nagori\u0414\u040cane",
+"city": "Staro Nagorichane",
 "latitude": 42.2,
 "longitude": 21.83,
 "population": "493"
@@ -360,7 +360,7 @@
 "population": "449"
 },
 {
-"city": "Centar \u0415\u0405upa",
+"city": "Centar Zhupa / Vapa",
 "latitude": 41.4775,
 "longitude": 20.5578,
 "population": "354"
@@ -372,13 +372,13 @@
 "population": "300"
 },
 {
-"city": "Bel\u0414\u040ci\u0415\u040eta",
+"city": "Belchishta",
 "latitude": 41.3028,
 "longitude": 20.8303,
 "population": "297"
 },
 {
-"city": "\u0414\u040au\u0414\u040cer-Sandevo",
+"city": "Chucher-Sandevo",
 "latitude": 42.0975,
 "longitude": 21.3877,
 "population": "274"
@@ -396,7 +396,7 @@
 "population": "121"
 },
 {
-"city": "\u0415\u0405elino",
+"city": "Zhelino",
 "latitude": 41.9794,
 "longitude": 21.0619,
 "population": "105"
@@ -408,7 +408,7 @@
 "population": "105"
 },
 {
-"city": "Studeni\u0414\u040cani",
+"city": "Studenichani",
 "latitude": 41.9158,
 "longitude": 21.5306,
 "population": "59"
@@ -418,29 +418,23 @@
 "latitude": 41.9233,
 "longitude": 20.9133,
 "population": "25"
-},
-{
-"city": "Ilinden",
-"latitude": 41.9945,
-"longitude": 21.58,
-"population": ""
-},
+},,
 {
 "city": "Lipkovo",
 "latitude": 42.1553,
 "longitude": 21.5875,
-"population": ""
+"population": "22308"
 },
 {
 "city": "Makedonska Kamenica",
 "latitude": 42.0208,
 "longitude": 22.5876,
-"population": ""
+"population": "6439"
 },
 {
 "city": "Resen",
 "latitude": 41.0893,
 "longitude": 21.0109,
-"population": ""
+"population": "14373"
 }
 ]
