@@ -244,8 +244,4 @@ function evaluatePixel(samples) {
     oauth = getauth_token()
     response = oauth.post(url, json=request, headers={"Accept": "image/tiff"})
 
-    # if response.status_code in (200,):
-    #     with open(f"C:\\Users\\ekate\\PycharmProjects\\PythonProject\\hackaton\\ozone_skopje.tiff", "wb") as tarfile:
-    #         tarfile.write(response.content)
-
     return response
