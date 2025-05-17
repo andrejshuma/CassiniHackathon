@@ -70,7 +70,6 @@ const Navbar = () => {
             {[
               { to: "/", label: "Home" },
               { to: "/advice", label: "My Advice" },
-              { to: "/stats", label: "Health Stats" },
               { to: "/profile", label: "My Profile" },
             ].map(({ to, label }) => (
               <Link

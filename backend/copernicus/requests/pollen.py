@@ -5,7 +5,11 @@ import xarray as xr
 import os
 import pandas as pd
 import geocoder
-from .consts import KEY
+from consts import KEY
+
+
+# score = [weight * pref for weight,pref in zip(weights, preferences)]
+from consts import KEY
 
 
 

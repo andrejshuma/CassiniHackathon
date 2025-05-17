@@ -25,11 +25,6 @@ export default function Slider_features({ activeSubpage, changeSubpage }) {
                 className={`flex items-center justify-center rounded-full p-4 ${activeSubpage === "pollution" ? 'bg-[rgba(255,255,255,0.2)]' : 'bg-[rgba(0,0,0,0.2)]'} shrink-0`}>
                 <Factory size={24}/>
             </button>
-            <button
-                onClick={() => changeSubpage("mental")}
-                className={`flex items-center justify-center rounded-full p-4 ${activeSubpage === "mental" ? 'bg-[rgba(255,255,255,0.2)]' : 'bg-[rgba(0,0,0,0.2)]'} shrink-0`}>
-                <Brain size={24}/>
-            </button>
         </div>
 );
 }
