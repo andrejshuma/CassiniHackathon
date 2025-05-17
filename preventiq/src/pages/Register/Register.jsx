@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function MultiStepForm() {
   const [currentStep, setCurrentStep] = useState(0);
@@ -11,29 +10,20 @@ function MultiStepForm() {
     password: "",
     gender: "",
     age: "",
-    allergies: {
-      sunAllergy: "",
-      airAllergy: "",
-      dustAllergy: "",
-      pollenAllergy: "",
-      moldAllergy: "",
-      grassAllergy: "",
-    },
-    pollenType: "",
-    diseases: {
-      skinDisease: "",
-      depression: "",
+    healthConditions: {
       asthma: "",
-      copd: "",
-      cardiovascularDisease: "",
+      respiratoryProblems: "",
+      cardiovascularProblems: "",
+      pollenAllergy: "",
+      mentalHealthDisorder: "",
+      skinConditions: "",
     },
   });
 
   const steps = [
     "Account Information",
     "Personal Details",
-    "Allergies",
-    "Medical Conditions",
+    "Health Conditions",
     "Health Advice",
   ];
 
@@ -53,7 +43,7 @@ function MultiStepForm() {
 
   const handleNext = () => {
     if (currentStep < steps.length - 1) {
-      if (currentStep === 3) {
+      if (currentStep === 2) {
         // When moving to the health advice step, show loading first
         setLoading(true);
         setTimeout(() => {
@@ -83,58 +73,23 @@ function MultiStepForm() {
     });
   };
 
-  const handleAllergySelect = (name) => {
+  const handleConditionSelect = (name) => {
     setFormData((prev) => ({
       ...prev,
-      allergies: {
-        ...prev.allergies,
-        [name]: prev.allergies[name] === "yes" ? "no" : "yes",
-      },
-    }));
-
-    if (
-      name === "pollenAllergy" &&
-      formData.allergies.pollenAllergy === "yes"
-    ) {
-      setFormData((prev) => ({
-        ...prev,
-        pollenType: "",
-      }));
-    }
-  };
-
-  const handlePollenTypeChange = (e) => {
-    setFormData((prev) => ({
-      ...prev,
-      pollenType: e.target.value,
-    }));
-  };
-
-  const handleDiseaseSelect = (name) => {
-    setFormData((prev) => ({
-      ...prev,
-      diseases: {
-        ...prev.diseases,
-        [name]: prev.diseases[name] === "yes" ? "no" : "yes",
+      healthConditions: {
+        ...prev.healthConditions,
+        [name]: prev.healthConditions[name] === "yes" ? "no" : "yes",
       },
     }));
   };
 
-  const allergyOptions = [
-    { label: "Sun", name: "sunAllergy" },
-    { label: "Air Pollution", name: "airAllergy" },
-    { label: "Dust", name: "dustAllergy" },
-    { label: "Pollen", name: "pollenAllergy" },
-    { label: "Mold", name: "moldAllergy" },
-    { label: "Grass", name: "grassAllergy" },
-  ];
-
-  const diseaseOptions = [
-    { label: "Skin Disease", name: "skinDisease" },
-    { label: "Depression", name: "depression" },
+  const healthConditionOptions = [
     { label: "Asthma", name: "asthma" },
-    { label: "COPD", name: "copd" },
-    { label: "Cardiovascular Disease", name: "cardiovascularDisease" },
+    { label: "Respiratory Problems", name: "respiratoryProblems" },
+    { label: "Cardiovascular Problems", name: "cardiovascularProblems" },
+    { label: "Pollen Allergy", name: "pollenAllergy" },
+    { label: "Mental Health Disorder", name: "mentalHealthDisorder" },
+    { label: "Skin Conditions", name: "skinConditions" },
   ];
 
   // Load new health advice when user refreshes this step
@@ -147,24 +102,32 @@ function MultiStepForm() {
     }, 1500);
   };
 
+  // Function to simulate completing the form (replacing Link component)
+  const handleComplete = () => {
+    alert("Registration complete!");
+    // Redirect to home page
+    window.location.href = "/";
+    // In a real app, you would handle form submission or navigation here
+  };
+
   return (
     <div
-      className="flex items-center justify-center min-h-screen p-4"
+      className="flex items-center justify-center min-h-screen p-2 sm:p-4"
       data-theme="nord"
     >
       <div
         data-theme="nord"
-        className="w-full max-w-md rounded-lg shadow-md p-6"
+        className="w-full max-w-md rounded-lg shadow-md p-4 sm:p-6"
       >
         <h1 className="text-xl font-bold mb-6">Registration</h1>
 
         {/* Progress Stepper - Mobile optimized */}
-        <div className="mb-6">
+        <div className="mb-4 sm:mb-6">
           <div className="flex justify-between items-center mb-2">
             {steps.map((step, index) => (
               <div key={index} className="flex flex-col items-center">
                 <div
-                  className={`w-8 h-8 flex items-center justify-center rounded-full border-2 font-bold text-xs
+                  className={`w-6 h-6 sm:w-8 sm:h-8 flex items-center justify-center rounded-full border-2 font-bold text-xs
                     ${
                       currentStep === index
                         ? "border-blue-500 text-blue-500"
@@ -283,47 +246,28 @@ function MultiStepForm() {
             </div>
           )}
 
-          {/* Step 3 - Allergies */}
+          {/* Step 3 - Combined Health Conditions */}
           {currentStep === 2 && (
             <div className="space-y-4">
-              <h2 className="text-lg font-semibold">Allergies</h2>
+              <h2 className="text-lg font-semibold">Health Conditions</h2>
               <div>
                 <label className="block mb-2 text-sm">
-                  Do you have any of the following allergies?
+                  Do you have any of these health conditions?
                 </label>
-                <div className="grid grid-cols-2 gap-2">
-                  {allergyOptions.map((option) => (
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {healthConditionOptions.map((option) => (
                     <div key={option.name} className="mb-2">
                       <button
                         type="button"
-                        className={`w-full px-3 py-2 rounded text-sm font-medium transition-colors ${
-                          formData.allergies[option.name] === "yes"
+                        className={`w-full h-14 px-3 py-2 rounded text-sm font-medium transition-colors flex items-center justify-center ${
+                          formData.healthConditions[option.name] === "yes"
                             ? "bg-blue-600 text-white"
                             : "bg-blue-100 text-blue-800 hover:bg-blue-200"
                         }`}
-                        onClick={() => handleAllergySelect(option.name)}
+                        onClick={() => handleConditionSelect(option.name)}
                       >
                         {option.label}
                       </button>
-                      {option.name === "pollenAllergy" &&
-                        formData.allergies.pollenAllergy === "yes" && (
-                          <div className="mt-2">
-                            <label className="block mb-1 text-xs">
-                              Pollen type:
-                            </label>
-                            <select
-                              value={formData.pollenType}
-                              onChange={handlePollenTypeChange}
-                              className="block w-full mt-1 rounded-md text-sm border border-gray-300 shadow-sm px-3 py-1 focus:ring-2 focus:ring-blue-500 focus:outline-none"
-                            >
-                              <option value="">Select</option>
-                              <option value="tree">Tree</option>
-                              <option value="grass">Grass</option>
-                              <option value="weed">Weed</option>
-                              <option value="other">Other</option>
-                            </select>
-                          </div>
-                        )}
                     </div>
                   ))}
                 </div>
@@ -331,37 +275,8 @@ function MultiStepForm() {
             </div>
           )}
 
-          {/* Step 4 - Medical Conditions */}
+          {/* Step 4 - Loading and Health Advice */}
           {currentStep === 3 && (
-            <div className="space-y-4">
-              <h2 className="text-lg font-semibold">Medical Conditions</h2>
-              <div>
-                <label className="block mb-2 text-sm">
-                  Do you have any of these environment-affected conditions?
-                </label>
-                <div className="grid grid-cols-1 gap-2">
-                  {diseaseOptions.map((option) => (
-                    <div key={option.name}>
-                      <button
-                        type="button"
-                        className={`w-full px-4 py-2 rounded text-sm font-medium transition-colors ${
-                          formData.diseases[option.name] === "yes"
-                            ? "bg-blue-600 text-white"
-                            : "bg-blue-100 text-blue-800 hover:bg-blue-200"
-                        }`}
-                        onClick={() => handleDiseaseSelect(option.name)}
-                      >
-                        {option.label}
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          )}
-
-          {/* Step 5 - Loading and Health Advice */}
-          {currentStep === 4 && (
             <div className="space-y-4 flex flex-col items-center justify-center min-h-40">
               {loading ? (
                 <div className="text-center py-8">
@@ -407,12 +322,12 @@ function MultiStepForm() {
           )}
 
           {/* Navigation Buttons - Mobile optimized */}
-          <div className="flex justify-between mt-6">
+          <div className="flex justify-between mt-4 sm:mt-6">
             <button
               type="button"
               onClick={handlePrev}
               disabled={currentStep === 0}
-              className={`px-4 py-2 rounded-md text-sm font-medium ${
+              className={`px-3 sm:px-4 py-2 rounded-md text-sm font-medium ${
                 currentStep === 0
                   ? "bg-gray-100 text-gray-400 cursor-not-allowed"
                   : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -425,17 +340,17 @@ function MultiStepForm() {
               <button
                 type="button"
                 onClick={handleNext}
-                className="bg-blue-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-600"
+                className="bg-blue-500 text-white px-3 sm:px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-600"
               >
                 Next
               </button>
             ) : (
-              <Link
-                to="/"
-                className="bg-green-500 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-green-600"
+              <button
+                onClick={handleComplete}
+                className="bg-green-500 text-white px-3 sm:px-4 py-2 rounded-md text-sm font-medium hover:bg-green-600"
               >
                 Complete
-              </Link>
+              </button>
             )}
           </div>
         </div>
