@@ -57,7 +57,7 @@ const Wrapper = styled.div`
 `
 
 const Number = styled.div`
-    font-size: 3rem;
+    font-size: 2rem;
     font-weight: bold;
 `
 
@@ -66,17 +66,17 @@ const DataWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: .4rem;
     
     & h1 {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         margin: 0;
         line-height: 1;
         font-weight: 700;
     }
 
     & h2 {
-        font-size: 1.2rem;
+        font-size: 1rem;
         margin: 0;
         line-height: 1;
         font-weight: 500;
@@ -96,7 +96,7 @@ const DataWrapper = styled.div`
         width: 100%;
 
         & > p {
-            font-size: 1.2rem;
+            font-size: .8rem;
         }
     }
     

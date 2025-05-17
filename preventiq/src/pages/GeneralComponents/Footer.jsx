@@ -3,7 +3,7 @@ import logo from "../../assets/logoSmall.png"; // Adjust the path as necessary
 const Footer = () => {
   return (
     <footer className="bg-white dark:bg-gray-900">
-      <div className="container px-6 py-8 mx-auto">
+      <div className="container px-6 py-2 mx-auto">
         <div className="flex flex-col items-center text-center space-y-4">
           <a href="#">
             <img className="w-30 rounded-lg " src={logo} alt="Logo" />
@@ -11,19 +11,19 @@ const Footer = () => {
 
           <div className="flex flex-wrap justify-center gap-4">
             <a
-              href="#"
+              href="/"
               className="px-3 py-1 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
             >
               Home
             </a>
             <a
-              href="#"
+              href="/profile"
               className="px-3 py-1 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
             >
               Profile
             </a>
             <a
-              href="#"
+              href="/advice"
               className="px-3 py-1 text-sm text-gray-600 transition-colors duration-300 hover:text-blue-500 dark:text-gray-300 dark:hover:text-blue-400"
             >
               Advice
