@@ -32,8 +32,8 @@ const Advice = () => {
       icon: <Sun className="w-5 h-5" />,
       goals: [
         {
-          title: "Healthy Eating",
-          duration: "15 Minutes",
+          title: "Avoid going outside",
+          duration: "12pm - 16pm",
         },
       ],
     },
@@ -54,7 +54,7 @@ const Advice = () => {
       icon: <Activity className="w-5 h-5" />,
       goals: [
         {
-          title: "Manage Diabetes",
+          title: "Don't forget your medication",
           duration: "20 Minutes",
         },
       ],
