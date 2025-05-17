@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import logo from "../../assets/logoSmall.png";
 
 const Navbar = () => {
@@ -8,9 +9,13 @@ const Navbar = () => {
     <nav className="relative rounded-lg" data-theme="nord">
       <div className="container px-6 py-3 mx-auto md:flex">
         <div className="flex items-center justify-between">
-          <a href="#">
-            <img className="w-auto h-8 sm:h-8 rounded-md" src={logo} alt="" />
-          </a>
+          <Link to="/">
+            <img
+              className="w-auto h-8 sm:h-8 rounded-md"
+              src={logo}
+              alt="Logo"
+            />
+          </Link>
 
           {/* Mobile menu button */}
           <div className="flex lg:hidden">
@@ -55,31 +60,30 @@ const Navbar = () => {
           </div>
         </div>
 
-        {/* Mobile Menu open: "block", Menu closed: "hidden" */}
+        {/* Links */}
         <div
           className={`absolute inset-x-0 z-20 w-full px-6 py-4 transition-all duration-300 ease-in-out bg-white dark:bg-gray-800 md:mt-0 md:p-0 md:top-0 md:relative md:opacity-100 md:translate-x-0 md:flex md:items-center md:justify-between rounded-lg ${
             isOpen ? "translate-x-0 opacity-100" : "opacity-0 -translate-x-full"
           }`}
         >
-          <div className="flex flex-col px-2 -mx-4 md:flex-row md:mx-10 md:py-0">
-            <a
-              href="#"
-              className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 md:mx-2"
-            >
-              Home
-            </a>
-            <a
-              href="#"
-              className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 md:mx-2"
-            >
-              About
-            </a>
-            <a
-              href="#"
-              className="px-2.5 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700 md:mx-2"
-            >
-              Contact
-            </a>
+          <div className="flex flex-col gap-y-2 px-2 -mx-4 md:flex-row md:space-x-4 md:mx-10 md:py-0">
+            {[
+              { to: "/", label: "Home" },
+              { to: "/polution", label: "Pollution" },
+              { to: "/greenareas", label: "Green Areas" },
+              { to: "/polen", label: "Pollen" },
+              { to: "/sunheat", label: "Sun & Heat" },
+              { to: "/crowd", label: "Crowd" },
+            ].map(({ to, label }) => (
+              <Link
+                key={to}
+                to={to}
+                onClick={() => setIsOpen(false)}
+                className="px-3 py-2 text-gray-700 transition-colors duration-300 transform rounded-lg dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-gray-700"
+              >
+                {label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>
