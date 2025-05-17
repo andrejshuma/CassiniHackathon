@@ -1,3 +1,5 @@
+import math
+
 from geopy.geocoders import Nominatim
 from csv import reader
 import json
@@ -23,8 +25,23 @@ def get_population_from_location(lat, lng):
     municipality = get_municipality_from_location(lat, lng)
     for city in population_data:
         if city["city"] == municipality:
-            return city["population"]
-    return None
+            return {"city": municipality, "population": city["population"]}
+
+    tmp_lat = population_data[0]["latitude"]
+    tmp_lng = population_data[0]["longitude"]
+    minimum_distance = math.sqrt(pow(lat - tmp_lat, 2) + pow(lng - tmp_lng, 2))
+    result_pop = population_data[0]["population"]
+    result_name = population_data[0]["city"]
+    for city in population_data:
+        city_lat = city["latitude"]
+        city_lng = city["longitude"]
+        distance = math.sqrt(pow(lat - city_lat, 2) + pow(lng - city_lng, 2))
+        if distance < minimum_distance:
+            minimum_distance = distance
+            result_name = city["name"]
+            result_pop = city["population"]
+
+    return {"city": result_name, "population": result_pop}
 
 def transform_mk_json():
     with open('mk.csv') as file:
@@ -50,8 +67,9 @@ def validate_data_json(data):
     for line in data:
         city_name = line['city']
         municipality = get_municipality_from_location(line["latitude"], line["longitude"])
-        if city_name == 'DraДЌevo': continue
         if city_name != municipality:
             line['city'] = municipality
             print(city_name + " " + municipality)
-    return data 
+    return data
+
+print(get_population_from_location(41.718869+0.001, 21.7705695))
