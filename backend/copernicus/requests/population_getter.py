@@ -17,16 +17,18 @@ def get_municipality_from_location(lat, lng):
     else:
         return None
 
-def get_population_from_location(lat, lng):
+def get_population_from_location(lat, lng, population_data_=None):
     global population_data
-    if population_data == None:
-        with open('population_data.json', 'r') as file:
-            population_data = json.load(file)
+    if population_data_ is not None:
+        population_data = population_data_
+    else:
+        if population_data == None:
+            with open('population_data.json', 'r') as file:
+                population_data = json.load(file)
     municipality = get_municipality_from_location(lat, lng)
     for city in population_data:
         if city["city"] == municipality:
             return {"city": municipality, "population": city["population"]}
-
     tmp_lat = population_data[0]["latitude"]
     tmp_lng = population_data[0]["longitude"]
     minimum_distance = math.sqrt(pow(lat - tmp_lat, 2) + pow(lng - tmp_lng, 2))
