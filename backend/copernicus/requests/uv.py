@@ -3,7 +3,7 @@ import xarray as xr
 import pandas as pd
 import os
 import tempfile
-from consts import KEY
+from .consts import KEY
 
 
 URL = "https://ads.atmosphere.copernicus.eu/api"
