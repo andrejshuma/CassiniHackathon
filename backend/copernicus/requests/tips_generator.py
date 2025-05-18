@@ -1,12 +1,13 @@
-from backend.copernicus.requests.testdata.test_output import TEST_OUTPUT
-from backend.copernicus.requests.score_calculator import calculate_score
+from .testdata.test_output import TEST_OUTPUT
+from .score_calculator import calculate_score
 from dotenv import load_dotenv
 from openai import OpenAI
 import os
+from pathlib import Path
 
 client = None
 def get_client():
-    load_dotenv('backend/copernicus/requests/satellite_requests/.env')
+    load_dotenv(dotenv_path=Path(__file__).resolve().parent / 'satellite_requests' / '.env')
     client = OpenAI(api_key=os.getenv('OPENAI_API_KEY'))
     return client
 
@@ -59,7 +60,3 @@ def generate_tips(diseases, dict_data, panic_score=0.0):
 
     return parse_response(response.output_text)
     
-# print(parse_array(example_tips_str))
-# arr = generate_tips(diseases=['asthma'], dict_data=TEST_OUTPUT, panic_score=calculate_score('asthma', TEST_OUTPUT['data'], 21))
-# for a in arr:
-#     print(a)
