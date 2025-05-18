@@ -1,7 +1,14 @@
 TEST_OUTPUT = {
     # ["uv", "green_density", "city_density", "ozone", "air_pollution", "pollen_density"]
     "data" : {
-        'uv': 1,
+        'uv': 
+            {
+                'category': 'Low',
+                'score': 1,
+                'scaled_value': 0.116035625,
+                'value': 2.3207125,
+                'description': 'Minimal protection needed. Safe to be outside.'
+            },
         'green_density': 0.1684321813254267,
         'city_density': 0.6587589408830308,
         'ozone_density': 0.14514514514514515,

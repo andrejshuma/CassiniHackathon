@@ -18,29 +18,7 @@ const Profile = () => {
 	});
 	const [result, setResult] = useState(-1);
 	const navigate = useNavigate();
-	const TEST_OUTPUT = {
-		data: {
-			uv: 0,
-			green_density: 0.1684321813254267,
-			city_density: 0.6587589408830308,
-			ozone_density: 0.14514514514514515,
-			air_pollution: {
-				datetime: "2025-05-17T21:49:22+02:00",
-				value: 8.0,
-				scaled_value: 0.008888888888888889,
-				category: "Good",
-				score: 1,
-			},
-			pollen: {
-				apg_conc_scaled: 1.708984375e-5,
-				bpg_conc_scaled: 0.0003515625,
-				gpg_conc_scaled: 0.20054931640625,
-				mpg_conc_scaled: 1.993000049844286e-20,
-				opg_conc_scaled: 7.8125e-5,
-				rwpg_conc_scaled: 2.3995056834212538e-20,
-			},
-		},
-	};
+
 	const FACTORS = [
 		"uv",
 		"green_density",
@@ -50,6 +28,7 @@ const Profile = () => {
 		"pollen_density",
 	];
 	const DISEASE = [
+		"None",
 		"Asthma",
 		"Pollen alergy",
 		"Cardiovascular Problems",
@@ -64,6 +43,13 @@ const Profile = () => {
 			age: importantUserData["age"],
 			diseases: importantUserData["diseases"],
 			scores: {
+				uv: {
+					category: "Low",
+					score: 1,
+					scaled_value: 0.116035625,
+					value: 2.3207125,
+					description: "Minimal protection needed. Safe to be outside.",
+				},
 				pollen: {
 					apg_conc_scaled: 1.708984375e-5,
 					bpg_conc_scaled: 0.0003515625,
@@ -225,13 +211,15 @@ const Profile = () => {
 												name="disease"
 												className="mr-3"
 												checked={
-													userData.diseases &&
-													userData.diseases.includes(disease)
+													importantUserData.diseases ==
+													disease.toLowerCase().replaceAll(" ", "_")
 												}
 												onChange={() => {
-													setUserData({
-														...userData,
-														diseases: disease.toLowerCase().replace(" ", "_"),
+													setImportantData({
+														...importantUserData,
+														diseases: disease
+															.toLowerCase()
+															.replaceAll(" ", "_"),
 													});
 												}}
 											/>
