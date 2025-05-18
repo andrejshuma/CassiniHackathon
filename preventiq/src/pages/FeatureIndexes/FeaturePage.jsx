@@ -5,6 +5,7 @@ import React from "react";
 import MiniChartBox from "./MiniChartBox.jsx";
 import RecommendationCard from "./RecommendationCard.jsx";
 
+
 export default function FeaturePage({data}) {
     return (
         <Container>
@@ -46,8 +47,8 @@ const Container = styled.div`
 `
 
 const BoxWrapper = styled.div`
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
+    width: 100%;
 `
