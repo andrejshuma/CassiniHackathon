@@ -6,7 +6,7 @@ const NewSlider = ({ setSubPage }) => {
 
     return (
         <>
-            <div className="grid grid-cols-3 gap-1 mb-4">
+            <div className="grid grid-cols-3 gap-4 mb-1">
                 <button
                     onClick={() => setSubPage("home")}
                     className="bg-blue-100 p-3 rounded-lg flex flex-col justify-between items-center gap-1 shadow-md">
@@ -26,7 +26,7 @@ const NewSlider = ({ setSubPage }) => {
                     <span className="text-s text-gray-700">Urbanization</span>
                 </button>
             </div>
-            <div className="grid grid-cols-4 gap-1 mb-4">
+            <div className="grid grid-cols-4 gap-4 mb-4">
                 <button
                     onClick={() => setSubPage("pollution")}
                     className="bg-amber-100 p-3 rounded-lg flex flex-col justify-between items-center gap-1 shadow-md">
