@@ -251,14 +251,14 @@ export default function Metrics() {
                                             stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
                                     </svg>
                                 </div>
-                                    <div>
-                                        <p className="text-sm text-gray-700">UV index</p>
-                                        <div className="flex items-baseline">
-                                            <span className="text-3xl font-bold text-gray-700">5</span>
-                                            <span className="text-lg text-gray-500"> / 10</span>
-                                        </div>
+                                <div>
+                                    <p className="text-sm text-gray-700">UV index</p>
+                                    <div className="flex items-baseline">
+                                        <span className="text-3xl font-bold text-gray-700">5</span>
+                                        <span className="text-lg text-gray-500"> / 10</span>
                                     </div>
                                 </div>
+                            </div>
 
 
                             <div className="bg-gray-100 rounded-3xl p-4">
@@ -274,18 +274,18 @@ export default function Metrics() {
                                     </svg>
                                 </div>
 
-                                    <div>
-                                        <p className="text-sm text-gray-700">Green coverage</p>
-                                        <div className="flex items-baseline">
-                                            <span className="text-3xl font-bold text-gray-700">32%</span>
+                                <div>
+                                    <p className="text-sm text-gray-700">Green coverage</p>
+                                    <div className="flex items-baseline">
+                                        <span className="text-3xl font-bold text-gray-700">32%</span>
 
-                                        </div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
 
 
-                            <div className="bg-indigo-50 rounded-3xl p-4 mb-4">
+                        <div className="bg-indigo-50 rounded-3xl p-4 mb-4">
                             <div className="flex items-center mb-3">
                                 <div
                                     className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
