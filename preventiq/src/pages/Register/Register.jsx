@@ -155,7 +155,7 @@ function MultiStepForm() {
   const submitForm = async (age, diseases, data) => {
     const payload = {
       age: age,
-      diseases: Object.keys(diseases).filter(key => diseases[key] === "yes")[0],
+      diseases: Object.keys(diseases).filter(key => diseases[key] === "yes")[0].toLowerCase().replaceAll(" ", "_"),
       scores: data.data,
     };
 
@@ -418,7 +418,7 @@ function MultiStepForm() {
                         const score = await submitForm(formData.age, formData.healthConditions, data);
 
                         setGlobalObject(() => ({
-                          data: data,
+                          data: data.data,
                           score: score,
                           user: formData,
                         }));

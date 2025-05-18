@@ -6,7 +6,7 @@ const NewSlider = ({ setSubPage }) => {
 
     return (
         <>
-            <div className="grid grid-cols-3 gap-1 mb-4">
+            <div className="grid grid-cols-3 gap-x-4">
                 <button
                     onClick={() => setSubPage("home")}
                     className="bg-blue-100 p-3 rounded-lg flex flex-col justify-between items-center gap-1 shadow-md">
@@ -20,15 +20,15 @@ const NewSlider = ({ setSubPage }) => {
                     <span className="text-s text-gray-700">Pollen</span>
                 </button>
                 <button
-                    onClick={() => setSubPage("cityDensity")}
+                    onClick={() => setSubPage("city_density")}
                     className="bg-yellow-100 p-3 rounded-lg flex flex-col justify-between items-center gap-1 shadow-md">
                     <Building size={24} color="#374151"/>
                     <span className="text-s text-gray-700">Urbanization</span>
                 </button>
             </div>
-            <div className="grid grid-cols-4 gap-1 mb-4">
+            <div className="grid grid-cols-4 gap-x-2 mb-4">
                 <button
-                    onClick={() => setSubPage("pollution")}
+                    onClick={() => setSubPage("air_pollution")}
                     className="bg-amber-100 p-3 rounded-lg flex flex-col justify-between items-center gap-1 shadow-md">
                     <Biohazard size={24} color="#374151"/>
                     <span className="text-s text-gray-700">Pollution</span>
@@ -40,13 +40,13 @@ const NewSlider = ({ setSubPage }) => {
                     <span className="text-s text-gray-700">UV</span>
                 </button>
                 <button
-                    onClick={() => setSubPage("ozone")}
+                    onClick={() => setSubPage("ozone_density")}
                     className="bg-orange-100 p-3 rounded-lg flex flex-col justify-between items-center gap-1 shadow-md">
                     <CloudFog size={24} color="#374151"/>
                     <span className="text-s text-gray-700">Ozone</span>
                 </button>
                 <button
-                    onClick={() => setSubPage("greenDensity")}
+                    onClick={() => setSubPage("green_density")}
                     className="bg-red-100 p-3 rounded-lg flex flex-col justify-between items-center gap-1 shadow-md">
                     <LeafyGreen size={24} color="#374151"/>
                     <span className="text-s text-gray-700">Greenery</span>

@@ -2,10 +2,21 @@ import styled from 'styled-components'
 import {Flower, Flower2, Trees} from 'lucide-react';
 
 export default function InfoBox({data}) {
+    console.log(data)
+
+    const getKeyName = {
+        "rwpg_conc_scaled": "Ragweed Pollen",
+        "opg_conc_scaled": "Olive Pollen",
+        "mpg_conc_scaled": "Mugwort Pollen",
+        "gpg_conc_scaled": "Grass Pollen",
+        "bpg_conc_scaled": "Birch Pollen",
+        "apg_conc_scaled": "Alder Pollen",
+    }
+
     const getValue = value => {
         if (value > 0.85) return "very high";
         if (value > 0.65) return "high";
-        if (value > 0.4) return "medium";
+        if (value > 0.1 ) return "medium";
         return "low";
     };
 
@@ -28,11 +39,11 @@ export default function InfoBox({data}) {
         <Wrapper style={{backgroundColor: getRGB[severity]}} className='shadow-md'>
             <Top>
                 {getSVG[data.name]}
-                <h1>{data.name}</h1>
+                <h1>{getKeyName[data.key]}</h1>
             </Top>
 
             <Center>
-                <Number>{data.index}</Number>
+                <Number>{Math.round(data.value * 100)/100}</Number>
             </Center>
 
             <Bottom>
@@ -57,6 +68,7 @@ const Wrapper = styled.div`
 const Top = styled.div`
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
 
     & h1 {

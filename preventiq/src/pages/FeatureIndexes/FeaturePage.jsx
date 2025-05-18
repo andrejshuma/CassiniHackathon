@@ -6,18 +6,31 @@ import MiniChartBox from "./MiniChartBox.jsx";
 import RecommendationCard from "./RecommendationCard.jsx";
 
 
-export default function FeaturePage({data}) {
+export default function FeaturePage({ data, page }) {
+    console.log(page)
+    console.log(data[page])
+
+    const getPageName = {
+        "pollen": "Pollen",
+        "city_density": "City Density",
+        "green_density": "Green Density",
+        "air_pollution": "Air Pollution",
+        "uv": "UV",
+        "ozone_density": "Ozone Density",
+    }
+
     return (
         <Container>
-            <h1>{data.name}</h1>
+            <h1>{getPageName[page]}</h1>
             <MiniChartBox/>
             <RecommendationCard/>
 
             <BoxWrapper>
                 {
-                    data.array.map((item, index) => (
-                        <InfoBox key={index} data={item}/>
-                    ))
+                    typeof data[page] === "object" ?
+                        Object.entries(data[page]).map(([key, value], index) => (
+                            <InfoBox key={index} data={{ key, value }} />
+                        )) : <InfoBox data={{ page: page, value: data[page] }} />
                 }
             </BoxWrapper>
 
@@ -37,6 +50,7 @@ const Container = styled.div`
     //background-color: #000;
     color: #333;
     padding: 1rem;
+    padding-top: 0;
 
     & > h1 {
         font-size: 2rem;

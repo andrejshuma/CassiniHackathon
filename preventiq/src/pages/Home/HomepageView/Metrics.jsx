@@ -41,6 +41,7 @@ const data = {
 
 export default function Metrics() {
     const { globalObject, setGlobalObject } = useGlobalState();
+    console.log(globalObject)
     const navigate = useNavigate();
     const [mentalHealthScore, setMentalHealthScore] = useState(72);
     const [subPage, setSubPage] = useState("home"); // home, pollen, uv, pollution, greenDensity, ozoneDensity
@@ -274,7 +275,7 @@ export default function Metrics() {
                             </div>
                         </div>
                     </>
-                ) : <FeaturePage data={data}/>
+                ) : <FeaturePage data={globalObject.data} page={subPage}/>
             }
 
 
