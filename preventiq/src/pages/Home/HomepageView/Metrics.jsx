@@ -6,6 +6,7 @@ import OverralHealth from "../OverralHealth.jsx";
 import Slider_features from "../Slider_features.jsx";
 import FeaturePage from "../../FeatureIndexes/FeaturePage.jsx";
 import AnalyticsScore from "../AnalyticsScore.jsx";
+import {useGlobalState} from "../../../GlobalStateProvider.jsx";
 
 const data = {
     "name": "Pollen",
@@ -54,8 +55,6 @@ export default function Metrics() {
         return {label: "Excellent", color: "text-green-500", bg: "bg-green-400"};
         // return {label: "Excellent", color: "text-green-500", bg: "bg-green-400"}
     };
-
-    axios.post("http://localhost:8000/api/calculate", )
 
     return (
         <div className="p-4 max-w-md mx-auto flex flex-col gap-4">

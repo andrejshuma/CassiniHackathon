@@ -24,7 +24,7 @@ const Top = () => {
                 <div className="flex justify-between w-full">
                     <div>
                         <h1 className="text-base">Welcome</h1>
-                        <h1 className="text-2xl font-bold">{globalObject.user.username}</h1>
+                        <h1 className="text-2xl font-bold">{globalObject.user ? globalObject.user.username : "Borjan gjorgjievski"}</h1>
                     </div>
                 </div>
                 <div
