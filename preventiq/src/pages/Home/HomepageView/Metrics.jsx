@@ -6,8 +6,6 @@ import OverralHealth from "../OverralHealth.jsx";
 import Slider_features from "../Slider_features.jsx";
 import FeaturePage from "../../FeatureIndexes/FeaturePage.jsx";
 import AnalyticsScore from "../AnalyticsScore.jsx";
-import axios from "axios";
-import {useGlobalState} from "../../../GlobalStateProvider.jsx";
 
 const data = {
     "name": "Pollen",
