@@ -5,7 +5,7 @@ const RecommendationCard = () => {
     const [open, setOpen] = useState(false);
 
     return (
-        <div className="bg-indigo-100 rounded-2xl shadow-md p-4 w-full max-w-md mx-auto transition-all duration-300 mb-4">
+        <div className="bg-indigo-100 rounded-2xl shadow-md p-4 w-full max-w-md mx-auto transition-all duration-300 mb-4 ">
             {/* Header with toggle */}
             <div
                 className="flex items-center justify-between cursor-pointer"

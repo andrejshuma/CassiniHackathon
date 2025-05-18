@@ -25,7 +25,7 @@ export default function InfoBox({data}) {
     const severity = getValue(data.index);
 
     return (
-        <Wrapper style={{backgroundColor: getRGB[severity]}}>
+        <Wrapper style={{backgroundColor: getRGB[severity]}} className='shadow-md'>
             <Top>
                 {getSVG[data.name]}
                 <h1>{data.name}</h1>
