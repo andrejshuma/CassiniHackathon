@@ -5,6 +5,7 @@ import NewSlider from "../NewSlider.jsx";
 import OverralHealth from "../OverralHealth.jsx";
 import Slider_features from "../Slider_features.jsx";
 import FeaturePage from "../../FeatureIndexes/FeaturePage.jsx";
+import AnalyticsScore from "../AnalyticsScore.jsx";
 
 const data = {
     "name": "Pollen",
@@ -44,66 +45,33 @@ export default function Metrics() {
 
 
     const getMentalHealthCategory = (score) => {
-        if (score >= 80) return {label: "Excellent", color: "text-green-600"};
-        if (score >= 70) return {label: "Good", color: "text-green-500"};
-        if (score >= 60) return {label: "Fair", color: "text-yellow-500"};
-        if (score >= 50) return {label: "Needs Attention", color: "text-orange-500"};
-        return {label: "Poor", color: "text-red-500"};
+        if (score >= 80) return {label: "Poor", color: "text-red-600", bg: "bg-red-300"};
+        if (score >= 70) return {label: "Mediocre", color: "text-orange-500", bg: "bg-orange-300"};
+        if (score >= 60) return {label: "Fair", color: "text-yellow-500", bg: "bg-yellow-300"};
+        if (score >= 50) return {label: "Good", color: "text-green-500", bg: "bg-green-300"};
+        return {label: "Excellent", color: "text-green-500", bg: "bg-green-400"};
+        // return {label: "Excellent", color: "text-green-500", bg: "bg-green-400"}
     };
 
     const mentalHealthCategory = getMentalHealthCategory(mentalHealthScore);
 
     return (
-        <div className="p-4 max-w-md mx-auto">
+        <div className="p-4 max-w-md mx-auto flex flex-col gap-4">
             {/* Mental Health Card */}
-            <div className="bg-blue-50 rounded-3xl p-4 mb-4">
-                <div className="flex justify-between items-start mb-3">
-                    <div className="flex items-center">
-                        <div
-                            className="w-12 h-12 rounded-full bg-white flex items-center justify-center overflow-hidden mr-4">
-                            <svg viewBox="0 0 24 24" width="24" height="24" className="text-green-500">
-                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" fill="none" stroke="currentColor" strokeWidth="2"
-                                      strokeLinecap="round" strokeLinejoin="round"/>
-                            </svg>
-                        </div>
-                        <div>
-                            <h3 className="font-bold text-gray-700">Safety Score</h3>
-                            <p className="text-sm text-gray-600">Today's Status: <span
-                                className={mentalHealthCategory.color}>{mentalHealthCategory.label}</span></p>
-                        </div>
-                    </div>
-                </div>
-
-                {/* Progress Bar */}
-                <div className="w-full bg-gray-200 rounded-full h-4 mb-3">
-                    <div
-                        className="h-4 rounded-full bg-gradient-to-r from-blue-400 to-blue-600"
-                        style={{width: `${mentalHealthScore}%`}}
-                    ></div>
-                </div>
-
-                <div className="flex justify-between text-xs text-gray-500 mb-4">
-                    <span>0</span>
-                    <span>50</span>
-                    <span>100</span>
-                </div>
-
-
-                {/* Tips/Recommendations */}
-                <div className="bg-white rounded-lg p-3 text-sm border border-blue-100">
-                    <h4 className="font-medium text-gray-700 mb-1">Today's Recommendation</h4>
-                    <p className="text-gray-600">Try 5 minutes of mindful breathing to reduce stress and improve your
-                        focus for the day.</p>
+            <div className={`${getMentalHealthCategory(mentalHealthScore).bg} flex gap-6 items-center px-6 py-4 rounded-lg`}>
+                <AnalyticsScore score={0.8} />
+                <div>
+                    <h1 className="text-2xl font-semibold text-white">Risk Level</h1>
+                    <p className="text-lg text-white">{mentalHealthCategory.label}</p>
                 </div>
             </div>
-
 
             <NewSlider setSubPage={setSubPage}/>
 
             {
                 subPage === "home" ? (
                     <>
-                        <div className="bg-green-100 rounded-3xl p-4 mb-4 flex justify-between">
+                        <div className="bg-blue-50 rounded-lg p-4 flex justify-between">
                             <div className="space-y-3 flex justify-center flex-col">
                                 <div>
                                     <h2 className="text-2xl font-bold text-gray-700 mb-1">Health Tips</h2>
@@ -171,9 +139,9 @@ export default function Metrics() {
                         {/*health tips*/}
 
                         {/* Metrics Row */}
-                        <div className="grid grid-cols-2 gap-4 mb-4">
+                        <div className="grid grid-cols-2 gap-4">
                             {/* Air Pollution */}
-                            <div className="bg-gray-100 rounded-3xl p-4">
+                            <div className="bg-gray-100 rounded-lg p-4">
                                 <div className="w-10 h-10 mb-6 flex items-center justify-center">
                                     <svg viewBox="0 0 24 24" width="40" height="40" className="text-gray-700">
                                         <path d="M4 14a1 1 0 0 1 0-2h16a1 1 0 1 1 0 2H4z" fill="currentColor"/>
@@ -191,7 +159,7 @@ export default function Metrics() {
                             </div>
 
                             {/* Pollen Count */}
-                            <div className="bg-gray-100 rounded-3xl p-4">
+                            <div className="bg-gray-100 rounded-lg p-4">
                                 <div className="w-10 h-10 mb-6 flex items-center justify-center">
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                                          className="text-gray-700">
@@ -241,7 +209,7 @@ export default function Metrics() {
                             </div>
 
 
-                            <div className="bg-gray-100  rounded-3xl p-4">
+                            <div className="bg-gray-100  rounded-lg p-4">
                                 <div className="w-10 h-10 mb-6 flex items-center justify-center">
                                     <svg viewBox="0 0 24 24" width="35" height="35" className="text-gray-700 ">
                                         <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor"
@@ -261,7 +229,7 @@ export default function Metrics() {
                                 </div>
 
 
-                            <div className="bg-gray-100 rounded-3xl p-4">
+                            <div className="bg-gray-100 rounded-lg p-4">
                                 <div className="w-10 h-10 mb-6 flex items-center justify-center">
                                     <svg viewBox="0 0 24 24" width="40" height="40" className="text-gray-700"
                                          fill="none"
@@ -285,7 +253,7 @@ export default function Metrics() {
                             </div>
 
 
-                            <div className="bg-indigo-50 rounded-3xl p-4 mb-4">
+                            <div className="bg-indigo-50 rounded-lg p-4">
                             <div className="flex items-center mb-3">
                                 <div
                                     className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
