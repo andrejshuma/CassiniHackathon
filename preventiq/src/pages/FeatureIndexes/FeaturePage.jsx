@@ -29,7 +29,7 @@ export default function FeaturePage({ data, page }) {
                 {
                     typeof data[page] === "object" ?
                         Object.entries(data[page]).map(([key, value], index) => (
-                            <InfoBox key={index} data={{ key, value }} />
+                            <InfoBox key={index} data={{ page: page, key: key, value: value }} />
                         )) : <InfoBox data={{ page: page, value: data[page] }} />
                 }
             </BoxWrapper>

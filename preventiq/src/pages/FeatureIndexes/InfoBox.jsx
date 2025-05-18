@@ -4,13 +4,22 @@ import {Flower, Flower2, Trees} from 'lucide-react';
 export default function InfoBox({data}) {
     console.log(data)
 
-    const getKeyName = {
+    const getPollenName = {
         "rwpg_conc_scaled": "Ragweed Pollen",
         "opg_conc_scaled": "Olive Pollen",
         "mpg_conc_scaled": "Mugwort Pollen",
         "gpg_conc_scaled": "Grass Pollen",
         "bpg_conc_scaled": "Birch Pollen",
         "apg_conc_scaled": "Alder Pollen",
+    }
+
+    const getKeyName = {
+        "pollen": getPollenName[data.key],
+        "city_density": "City Density",
+        "green_density": "Green Density",
+        "air_pollution": "PM10",
+        "uv": "UV",
+        "ozone_density": "Ozone Density",
     }
 
     const getValue = value => {
@@ -39,7 +48,7 @@ export default function InfoBox({data}) {
         <Wrapper style={{backgroundColor: getRGB[severity]}} className='shadow-md'>
             <Top>
                 {getSVG[data.name]}
-                <h1>{getKeyName[data.key]}</h1>
+                <h1>{getKeyName[data.page]}</h1>
             </Top>
 
             <Center>

@@ -152,10 +152,10 @@ export default function Metrics() {
                                     </svg>
                                 </div>
                                 <div>
-                                    <p className="text-sm text-gray-700">Air pollution</p>
+                                    <p className="text-sm text-gray-700">Air pollution - PM10</p>
                                     <div className="flex items-baseline">
-                                        <span className="text-3xl font-bold text-gray-700">123</span>
-                                        <span className="text-lg text-gray-500"> PM10</span>
+                                        <span className="text-3xl font-bold text-gray-700">{Math.round(globalObject.data.air_pollution.scaled_value * 100) / 100}</span>
+                                        <span className="text-lg text-gray-500"> /10</span>
                                     </div>
                                 </div>
                             </div>
@@ -202,10 +202,10 @@ export default function Metrics() {
                                     </svg>
                                 </div>
                                 <div>
-                                    <p className="text-sm text-gray-700">Pollen level</p>
+                                    <p className="text-sm text-gray-700">Pollen overall level</p>
                                     <div className="flex items-baseline">
-                                        <span className="text-3xl font-bold text-gray-700">67</span>
-                                        <span className="text-lg text-gray-500"> / 100</span>
+                                        <span className="text-3xl font-bold text-gray-700">{Math.round(Object.values(globalObject.data.pollen).reduce((sum, value) => sum + value, 0) / 6 * 100) / 100}</span>
+                                        <span className="text-lg text-gray-500"> /10</span>
                                     </div>
                                 </div>
                             </div>
@@ -224,8 +224,8 @@ export default function Metrics() {
                                     <div>
                                         <p className="text-sm text-gray-700">UV index</p>
                                         <div className="flex items-baseline">
-                                            <span className="text-3xl font-bold text-gray-700">5</span>
-                                            <span className="text-lg text-gray-500"> / 10</span>
+                                            <span className="text-3xl font-bold text-gray-700">{Math.round(globalObject.data.uv.scaled_value * 100) / 100}</span>
+                                            <span className="text-lg text-gray-500"> /10</span>
                                         </div>
                                     </div>
                                 </div>
@@ -247,7 +247,7 @@ export default function Metrics() {
                                     <div>
                                         <p className="text-sm text-gray-700">Green coverage</p>
                                         <div className="flex items-baseline">
-                                            <span className="text-3xl font-bold text-gray-700">32%</span>
+                                            <span className="text-3xl font-bold text-gray-700">{Math.round(globalObject.data.green_density * 100)}%</span>
 
                                         </div>
                                     </div>
