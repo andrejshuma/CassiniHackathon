@@ -1,5 +1,4 @@
 TEST_OUTPUT = {
-    # ["uv", "green_density", "city_density", "ozone", "air_pollution", "pollen_density"]
     "data" : {
         'uv': 
             {

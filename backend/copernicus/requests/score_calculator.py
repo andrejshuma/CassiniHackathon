@@ -31,6 +31,7 @@
 # Ozone: 0.12
 # Air pollution 0.1
 # Pollen density: 0
+import copy
 import math
 
 labels = ["uv", "green_density", "city_density", "ozone", "air_pollution", "pollen_density"]
@@ -50,6 +51,7 @@ def calculate_score(diseases, scores, age):
     age e int, pol ne ne interesira
     """
     # BITNO ^^^^^^
+    scores = copy.deepcopy(scores)
     scores["air_pollution"] = scores["air_pollution"]["scaled_value"]
     scores["uv"] = scores["uv"]["scaled_value"]
     pollen_scores = scores["pollen"]
@@ -66,7 +68,7 @@ def calculate_score(diseases, scores, age):
 
     if diseases != '' and diseases != "none": 
         multipliers = multiplier_dict[diseases]
-        print(multipliers)
+        # print(multipliers)
         score = [float(scores[sc]) * (1 + mult + age_addition) for sc, mult in zip(scores, multipliers[:-1])]
         # max_score = [(1 + mult + age_addition) for mult in multipliers]
         score = sum(score) + sum([pollen_scores[pollen_type] * multipliers[-1] for pollen_type in pollen_types])
