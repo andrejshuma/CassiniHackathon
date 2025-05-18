@@ -11,19 +11,23 @@ import Advice from "./pages/Advice/Advice";
 import Profile from "./pages/Profile/Profile";
 import FeaturePage from "./pages/FeatureIndexes/FeaturePage.jsx";
 
+import { GlobalStateProvider } from "./GlobalStateProvider.jsx";
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/1" element={<FeaturePage />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/test" element={<Test />}></Route>
-        <Route path="/advice" element={<Advice />} />
-        <Route path="/home" element={<Home />} />
+    <GlobalStateProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/1" element={<FeaturePage />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/test" element={<Test />}></Route>
+          <Route path="/advice" element={<Advice />} />
+          <Route path="/home" element={<Home />} />
 
-        <Route path="/profile" element={<Profile />} />
-      </Routes>
-    </Router>
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </Router>
+    </GlobalStateProvider>
   </StrictMode>
 );

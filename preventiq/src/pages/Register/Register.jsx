@@ -1,6 +1,9 @@
 import { useState } from "react";
+import { useGlobalState } from "../../GlobalStateProvider.jsx";
+import {Link} from "react-router-dom"; // Adjust the import path as necessary
 
 function MultiStepForm() {
+  const { globalObject, setGlobalObject } = useGlobalState();
   const [currentStep, setCurrentStep] = useState(0);
   const [loading, setLoading] = useState(false);
   const [healthAdvice, setHealthAdvice] = useState("");
@@ -102,13 +105,83 @@ function MultiStepForm() {
     }, 1500);
   };
 
-  // Function to simulate completing the form (replacing Link component)
-  const handleComplete = () => {
-    alert("Registration complete!");
-    // Redirect to home page
-    window.location.href = "/";
-    // In a real app, you would handle form submission or navigation here
+
+  const sendLocation = () => {
+    return new Promise((resolve, reject) => {
+      setLoading(true);
+
+      const success = (position) => {
+        const url = "http://localhost:8000/api/data/";
+        const data = {
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        };
+
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        })
+            .then((response) => {
+              if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+              }
+              return response.json();
+            })
+            .then((result) => {
+              setLoading(false);
+              resolve(result.data);
+            })
+            .catch((error) => {
+              setLoading(false);
+              console.error("Error:", error);
+              reject(error);
+            });
+      };
+
+      const error = () => {
+        setLoading(false);
+        alert("niso ne praime bez lokacija bratce");
+        reject("Location denied");
+      };
+
+      navigator.geolocation.getCurrentPosition(success, error);
+    });
   };
+
+
+  const submitForm = async (age, diseases, data) => {
+    const payload = {
+      age: age,
+      diseases: Object.keys(diseases).filter(key => diseases[key] === "yes")[0],
+      scores: data.data,
+    };
+
+    try {
+      const response = await fetch("http://localhost:8000/api/calculate/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (!response.ok) {
+        console.log('ERRRRORRRRR')
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      return Math.round(result.score * 1000)/10;
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      return null;
+    }
+  };
+
+
 
   return (
       <div
@@ -337,12 +410,26 @@ function MultiStepForm() {
             </button>
 
             {currentStep === steps.length - 1 ? (
-                <button
-                    onClick={handleComplete}
+                <Link
+                    to="/"
+                    onClick={async () => {
+                      try {
+                        const data = await sendLocation();
+                        const score = await submitForm(formData.age, formData.healthConditions, data);
+
+                        setGlobalObject(() => ({
+                          data: data,
+                          score: score,
+                          user: formData,
+                        }));
+                      } catch (error) {
+                        console.error("Error during registration:", error);
+                      }
+                    }}
                     className="px-4 py-2 bg-green-600 text-white rounded-md font-bold hover:bg-green-700 transition"
                 >
                   Complete Registration
-                </button>
+                </Link>
             ) : (
                 <button
                     onClick={handleNext}

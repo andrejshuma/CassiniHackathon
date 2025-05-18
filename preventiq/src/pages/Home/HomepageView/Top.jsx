@@ -3,8 +3,10 @@ import userDefault from "../../../assets/userDefault.jpg";
 import bossImage from "../../../assets/Boss.png"
 import SplitText from "./SplitText.jsx";
 import { Link } from "react-router-dom";
+import {useGlobalState} from "../../../GlobalStateProvider.jsx";
 
 const Top = () => {
+    const { globalObject, setGlobalObject } = useGlobalState();
     return (
         <div className="px-6 pt-4 flex justify-between items-center " data-theme="nord">
             <div className="flex items-center space-x-3 w-full">
@@ -22,7 +24,7 @@ const Top = () => {
                 <div className="flex justify-between w-full">
                     <div>
                         <h1 className="text-base">Welcome</h1>
-                        <h1 className="text-2xl font-bold">Borjan Gjorgjievski</h1>
+                        <h1 className="text-2xl font-bold">{globalObject.user.username}</h1>
                     </div>
                 </div>
                 <div

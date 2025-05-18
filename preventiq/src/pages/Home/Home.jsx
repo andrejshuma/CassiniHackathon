@@ -10,9 +10,12 @@ import Tips from "./Tips.jsx";
 import Top from "./HomepageView/Top.jsx";
 import Metrics from "./HomepageView/Metrics.jsx";
 import Footer from "../GeneralComponents/Footer.jsx";
+import { useGlobalState } from "../../GlobalStateProvider.jsx";
 
 
 const Home = () => {
+    const { globalObject, setGlobalObject } = useGlobalState();
+    console.log("HOME PAGE", globalObject)
     const [subPage, setSubPage] = React.useState("pollen"); // home, pollen, uv, pollution, mental
     const getData = {
         "pollen": pollenData,

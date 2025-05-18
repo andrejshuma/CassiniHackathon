@@ -6,6 +6,8 @@ import OverralHealth from "../OverralHealth.jsx";
 import Slider_features from "../Slider_features.jsx";
 import FeaturePage from "../../FeatureIndexes/FeaturePage.jsx";
 import AnalyticsScore from "../AnalyticsScore.jsx";
+import axios from "axios";
+import {useGlobalState} from "../../../GlobalStateProvider.jsx";
 
 const data = {
     "name": "Pollen",
@@ -39,12 +41,14 @@ const data = {
 }
 
 export default function Metrics() {
+    const { globalObject, setGlobalObject } = useGlobalState();
     const navigate = useNavigate();
     const [mentalHealthScore, setMentalHealthScore] = useState(72);
     const [subPage, setSubPage] = useState("home"); // home, pollen, uv, pollution, greenDensity, ozoneDensity
 
 
-    const getMentalHealthCategory = (score) => {
+    const getMentalHealthCategory = () => {
+        const score = globalObject.score
         if (score >= 80) return {label: "Poor", color: "text-red-600", bg: "bg-red-300"};
         if (score >= 70) return {label: "Mediocre", color: "text-orange-500", bg: "bg-orange-300"};
         if (score >= 60) return {label: "Fair", color: "text-yellow-500", bg: "bg-yellow-300"};
@@ -53,16 +57,16 @@ export default function Metrics() {
         // return {label: "Excellent", color: "text-green-500", bg: "bg-green-400"}
     };
 
-    const mentalHealthCategory = getMentalHealthCategory(mentalHealthScore);
+    axios.post("http://localhost:8000/api/calculate", )
 
     return (
         <div className="p-4 max-w-md mx-auto flex flex-col gap-4">
             {/* Mental Health Card */}
             <div className={`${getMentalHealthCategory(mentalHealthScore).bg} flex gap-6 items-center px-6 py-4 rounded-lg`}>
-                <AnalyticsScore score={0.8} />
+                <AnalyticsScore score={globalObject.score} />
                 <div>
                     <h1 className="text-2xl font-semibold text-white">Risk Level</h1>
-                    <p className="text-lg text-white">{mentalHealthCategory.label}</p>
+                    <p className="text-lg text-white">{getMentalHealthCategory().label}</p>
                 </div>
             </div>
 
