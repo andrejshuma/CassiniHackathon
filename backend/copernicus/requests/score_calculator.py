@@ -52,6 +52,7 @@ def calculate_score(diseases, scores, age):
     """
     # BITNO ^^^^^^
     scores = copy.deepcopy(scores)
+    age = int(age)
     scores["air_pollution"] = scores["air_pollution"]["scaled_value"]
     scores["uv"] = scores["uv"]["scaled_value"]
     pollen_scores = scores["pollen"]
