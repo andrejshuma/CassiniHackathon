@@ -75,6 +75,30 @@ export default function Metrics() {
                         </div>
                     </div>
                 </div>
+            <div className="bg-blue-50 rounded-3xl p-4 mb-4 shadow-md">
+                <div className="flex justify-between items-start mb-3">
+                    <div className="flex items-center">
+                        <div
+                            className="w-12 h-12 rounded-full bg-white flex items-center justify-center overflow-hidden mr-4">
+                            <svg viewBox="0 0 24 24" width="24" height="24" className="text-green-500">
+                                <path d="M22 12h-4l-3 9L9 3l-3 9H2" fill="none" stroke="currentColor" strokeWidth="2"
+                                      strokeLinecap="round" strokeLinejoin="round"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 className="font-bold text-gray-700">Safety Score</h3>
+                            <p className="text-sm text-gray-600">Today's Status: <span
+                                className={mentalHealthCategory.color}>{mentalHealthCategory.label}</span></p>
+                        </div>
+                    </div>
+                </div>
+            <div className={`${getMentalHealthCategory(mentalHealthScore).bg} flex gap-6 items-center px-6 py-4 rounded-lg`}>
+                <AnalyticsScore score={0.8} />
+                <div>
+                    <h1 className="text-2xl font-semibold text-white">Risk Level</h1>
+                    <p className="text-lg text-white">{mentalHealthCategory.label}</p>
+                </div>
+            </div>
 
                 {/* Progress Bar */}
                 <div className="w-full bg-gray-200 rounded-full h-4 mb-3">
@@ -105,7 +129,7 @@ export default function Metrics() {
             {
                 subPage === "home" ? (
                     <>
-                        <div className="bg-green-100 rounded-3xl p-4 mb-4 flex justify-between">
+                        <div className="bg-green-100 rounded-3xl p-4 mb-4 flex justify-between shadow-md">
                             <div className="space-y-3 flex justify-center flex-col">
                                 <div>
                                     <h2 className="text-2xl font-bold text-gray-700 mb-1">Health Tips</h2>

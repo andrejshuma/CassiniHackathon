@@ -2,9 +2,11 @@ import React from 'react'
 import {Bubbles, Factory, House, Sun, Building, LeafyGreen, CloudFog, Biohazard} from "lucide-react";
 
 const NewSlider = ({ setSubPage }) => {
+
+
     return (
         <>
-            <div className="grid grid-cols-3 gap-1 mb-4 ">
+            <div className="grid grid-cols-3 gap-1 mb-4">
                 <button
                     onClick={() => setSubPage("home")}
                     className="bg-blue-100 p-3 rounded-lg flex flex-col justify-between items-center gap-1 shadow-md">
