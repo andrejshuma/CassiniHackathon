@@ -11,3 +11,4 @@ sentinelhub==3.11.1
 requests_oauthlib==2.0.0
 oauthlib==3.2.2
 geopy==25.1.1
+openai==1.79.0
