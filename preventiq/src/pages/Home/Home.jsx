@@ -1,7 +1,6 @@
 import React from "react";
 import Navbar from "../GeneralComponents/Navbar";
 import { Bell } from 'lucide-react';
-import userDefault from "../../assets/userDefault.jpg";
 import Slider_features from "./Slider_features.jsx";
 import FeaturePages from "./OldFeaturePageWIthAnalytics.jsx";
 import {pollenData, uvData, pollutionData} from "./data.js";

@@ -5,6 +5,7 @@ import NewSlider from "../NewSlider.jsx";
 import OverralHealth from "../OverralHealth.jsx";
 import Slider_features from "../Slider_features.jsx";
 import FeaturePage from "../../FeatureIndexes/FeaturePage.jsx";
+import AnalyticsScore from "../AnalyticsScore.jsx";
 
 const data = {
     "name": "Pollen",
@@ -44,17 +45,18 @@ export default function Metrics() {
 
 
     const getMentalHealthCategory = (score) => {
-        if (score >= 80) return {label: "Excellent", color: "text-green-600"};
-        if (score >= 70) return {label: "Good", color: "text-green-500"};
-        if (score >= 60) return {label: "Fair", color: "text-yellow-500"};
-        if (score >= 50) return {label: "Needs Attention", color: "text-orange-500"};
-        return {label: "Poor", color: "text-red-500"};
+        if (score >= 80) return {label: "Poor", color: "text-red-600", bg: "bg-red-300"};
+        if (score >= 70) return {label: "Mediocre", color: "text-orange-500", bg: "bg-orange-300"};
+        if (score >= 60) return {label: "Fair", color: "text-yellow-500", bg: "bg-yellow-300"};
+        if (score >= 50) return {label: "Good", color: "text-green-500", bg: "bg-green-300"};
+        return {label: "Excellent", color: "text-green-500", bg: "bg-green-400"};
+        // return {label: "Excellent", color: "text-green-500", bg: "bg-green-400"}
     };
 
     const mentalHealthCategory = getMentalHealthCategory(mentalHealthScore);
     const shadowStyle = { boxShadow: "1px 4px 3px rgba(0, 0, 0, 0.1)" };
     return (
-        <div className="p-4 max-w-md mx-auto">
+        <div className="p-4 max-w-md mx-auto flex flex-col gap-4">
             {/* Mental Health Card */}
             <div className="bg-blue-50 rounded-3xl p-4 mb-4 shadow-md">
                 <div className="flex justify-between items-start mb-3">
@@ -73,30 +75,13 @@ export default function Metrics() {
                         </div>
                     </div>
                 </div>
-
-                {/* Progress Bar */}
-                <div className="w-full bg-gray-200 rounded-full h-4 mb-3">
-                    <div
-                        className="h-4 rounded-full bg-gradient-to-r from-blue-400 to-blue-600"
-                        style={{width: `${mentalHealthScore}%`}}
-                    ></div>
-                </div>
-
-                <div className="flex justify-between text-xs text-gray-500 mb-4">
-                    <span>0</span>
-                    <span>50</span>
-                    <span>100</span>
-                </div>
-
-
-                {/* Tips/Recommendations */}
-                <div className="bg-white rounded-lg p-3 text-sm border border-blue-100">
-                    <h4 className="font-medium text-gray-700 mb-1">Today's Recommendation</h4>
-                    <p className="text-gray-600">Try 5 minutes of mindful breathing to reduce stress and improve your
-                        focus for the day.</p>
+            <div className={`${getMentalHealthCategory(mentalHealthScore).bg} flex gap-6 items-center px-6 py-4 rounded-lg`}>
+                <AnalyticsScore score={0.8} />
+                <div>
+                    <h1 className="text-2xl font-semibold text-white">Risk Level</h1>
+                    <p className="text-lg text-white">{mentalHealthCategory.label}</p>
                 </div>
             </div>
-
 
             <NewSlider setSubPage={setSubPage}/>
 

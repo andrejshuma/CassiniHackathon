@@ -5,7 +5,8 @@ import datetime
 def get_current_hour_uv(data_array):
     now=datetime.datetime.now()
     # current_hour = f"2025-05-08 {now.hour}:00:00"
-    current_hour = f"2025-05-08 12:00:00"
+    hour = f"0{now.hour}" if now.hour < 10 else now.hour
+    current_hour = f"2025-05-08 {hour}:00:00"
     
     for entry in data_array:
         if str(entry["valid_time"]) == current_hour:
