@@ -59,7 +59,7 @@ export default function Metrics() {
     return (
         <div className="p-4 max-w-md mx-auto flex flex-col gap-4">
             {/* Mental Health Card */}
-            <div className={`${getMentalHealthCategory(mentalHealthScore).bg} flex gap-6 items-center px-6 py-4 rounded-lg`}>
+            <div className={`${getMentalHealthCategory(mentalHealthScore).bg} flex gap-6 items-center px-6 py-4 rounded-lg shadow-md`}>
                 <AnalyticsScore score={globalObject.score} />
                 <div>
                     <h1 className="text-2xl font-semibold text-white">Risk Level</h1>
@@ -72,8 +72,8 @@ export default function Metrics() {
             {
                 subPage === "home" ? (
                     <>
-                        <div className="bg-blue-50 rounded-lg p-4 flex justify-between">
-                            <div className="space-y-3 flex justify-center flex-col">
+                        <div className="bg-blue-50 rounded-lg p-4 flex justify-between shadow-md">
+                            <div className="space-y-3 flex justify-center flex-col ">
                                 <div>
                                     <h2 className="text-2xl font-bold text-gray-700 mb-1">Health Tips</h2>
                                     <p className="text-base text-gray-700">Air quality requires caution</p>
@@ -140,9 +140,9 @@ export default function Metrics() {
                         {/*health tips*/}
 
                         {/* Metrics Row */}
-                        <div className="grid grid-cols-2 gap-4">
+                        <div className="grid grid-cols-2 gap-4 ">
                             {/* Air Pollution */}
-                            <div className="bg-gray-100 rounded-lg p-4">
+                            <div className="bg-gray-100 rounded-lg p-4 shadow-md">
                                 <div className="w-10 h-10 mb-6 flex items-center justify-center">
                                     <svg viewBox="0 0 24 24" width="40" height="40" className="text-gray-700">
                                         <path d="M4 14a1 1 0 0 1 0-2h16a1 1 0 1 1 0 2H4z" fill="currentColor"/>
@@ -160,7 +160,7 @@ export default function Metrics() {
                             </div>
 
                             {/* Pollen Count */}
-                            <div className="bg-gray-100 rounded-lg p-4">
+                            <div className="bg-gray-100 rounded-lg p-4 shadow-md">
                                 <div className="w-10 h-10 mb-6 flex items-center justify-center">
                                     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"
                                          className="text-gray-700">
@@ -210,7 +210,7 @@ export default function Metrics() {
                             </div>
 
 
-                            <div className="bg-gray-100  rounded-lg p-4">
+                            <div className="bg-gray-100  rounded-lg p-4 shadow-md">
                                 <div className="w-10 h-10 mb-6 flex items-center justify-center">
                                     <svg viewBox="0 0 24 24" width="35" height="35" className="text-gray-700 ">
                                         <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor"
@@ -230,7 +230,7 @@ export default function Metrics() {
                                 </div>
 
 
-                            <div className="bg-gray-100 rounded-lg p-4">
+                            <div className="bg-gray-100 rounded-lg p-4 shadow-md">
                                 <div className="w-10 h-10 mb-6 flex items-center justify-center">
                                     <svg viewBox="0 0 24 24" width="40" height="40" className="text-gray-700"
                                          fill="none"
@@ -254,7 +254,7 @@ export default function Metrics() {
                             </div>
 
 
-                            <div className="bg-indigo-50 rounded-lg p-4">
+                            <div className="bg-indigo-50 rounded-lg p-4 shadow-md">
                             <div className="flex items-center mb-3">
                                 <div
                                     className="w-10 h-10 rounded-full bg-indigo-100 flex items-center justify-center mr-3">
