@@ -7,7 +7,7 @@ from .consts import KEY
 from .testingUv import categorize_uv_index, get_current_hour_uv, uv_radiation_to_index
 
 URL = "https://ads.atmosphere.copernicus.eu/api"
-KEY= "457347ba-9776-4077-992b-c673b0776e6f"
+KEY = "457347ba-9776-4077-992b-c673b0776e6f"
 
 def request_uv(year, month, day, variable, area):
     dataset = "reanalysis-era5-single-levels"
@@ -68,7 +68,6 @@ def get_uv(long, lat):
     area = [lat + 0.02, long - 0.02, lat - 0.02, long - 0.02]
     doc = request_uv(year="2025", month="05", day="08", variable="downward_uv_radiation_at_the_surface", area=area)
     cleaned_data, df = clean_data(doc=doc, variable="uvb")
-    print(cleaned_data)
 
     os.remove(doc)
 
@@ -79,10 +78,15 @@ def get_uv(long, lat):
     json_data = df.to_dict(orient='records')
 
     # lmao
-    a = get_uv(21.4314, 41.9965)
-    b = get_current_hour_uv(a)['uv_radiation_J_per_m2']
-    c = uv_radiation_to_index(b,3600)
+    a = json_data
+    b = get_current_hour_uv(a)
+    if b is None:
+        return {'category': 'No data', 'score': -1, 'scaled_value': 0, 'value': -1, 'description': 'No data.'}
+    c = uv_radiation_to_index(b['uv_radiation_J_per_m2'],3600)
     d = (categorize_uv_index(c))
+    return d
+
+
 
 
 

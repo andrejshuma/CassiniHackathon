@@ -2,6 +2,8 @@ from django.shortcuts import render
 from django.http import HttpResponse, JsonResponse
 import json
 from django.views.decorators.csrf import csrf_exempt
+
+from .requests.score_calculator import calculate_score
 from .requests.uv import get_uv
 from .requests.pollen import get_pollen_data_json
 from .requests.greenness_density import greenness_density
@@ -18,6 +20,23 @@ from .requests.testdata.test_output import TEST_OUTPUT
 # Create your views here.
 def index(request):
     return JsonResponse({"message": "zdravo"})
+
+@csrf_exempt
+def calculate(request):
+    if request.method == "POST":
+        try:
+            data = json.loads(request.body.decode('utf-8'))
+            age = data["age"]
+            diseases = data["diseases"]
+            scores = data["scores"]
+
+            score = calculate_score(diseases=diseases, scores=scores, age=age)
+            return JsonResponse({"score": score}, status=200)
+
+        except json.JSONDecodeError:
+            return JsonResponse({'error': 'Invalid JSON'}, status=400)
+    else:
+        return JsonResponse({'error': 'Invalid request method'}, status=405)
 
 
 @csrf_exempt
@@ -58,5 +77,6 @@ def get_data(request):
             return JsonResponse({'error': 'Invalid JSON'}, status=400)
     else:
         return JsonResponse({'error': 'Invalid request method'}, status=405)
+    
     
 
